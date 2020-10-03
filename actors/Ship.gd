@@ -20,7 +20,11 @@ func die():
 
 func pilot(delta):
 	if Input.is_action_pressed("ship_boost"):
+		$BoosterAnim.show()
+		$BoosterAnim.play()
 		speed += ACCELERATION*delta*Vector2(cos(rotation), sin(rotation))
+	else:
+		$BoosterAnim.hide()
 	
 	if Input.is_action_pressed("ship_turn_left"):
 		rotation -= TURN_SPEED*delta
