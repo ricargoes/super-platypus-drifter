@@ -4,15 +4,17 @@
 [ext_resource path="res://interface/indicator_bar_fill.png" type="Texture" id=2]
 [ext_resource path="res://interface/IndicatorBar.gd" type="Script" id=3]
 
-[node name="IndicatorBar" type="Node2D"]
+[node name="IndicatorBar" type="Control"]
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Bg" type="Sprite" parent="."]
+[node name="Bg" type="TextureRect" parent="."]
 texture = ExtResource( 1 )
-centered = false
 
-[node name="Fill" type="Sprite" parent="."]
+[node name="Fill" type="TextureRect" parent="."]
+rect_min_size = Vector2( 240, 60 )
 texture = ExtResource( 2 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 240, 60 )
+expand = true
+stretch_mode = 2
