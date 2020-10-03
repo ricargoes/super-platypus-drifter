@@ -1,3 +1,18 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://levels/Level.gd" type="Script" id=2]
+[ext_resource path="res://planets/Planet.tscn" type="PackedScene" id=3]
 
 [node name="Level1" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="CameraStart" type="Node2D" parent="."]
+position = Vector2( 256, 540 )
+
+[node name="ShipStart" type="Node2D" parent="."]
+position = Vector2( 256, 540 )
+
+[node name="Planets" type="Node2D" parent="."]
+
+[node name="Planet1" parent="Planets" instance=ExtResource( 3 )]
+position = Vector2( 664.61, 548.794 )
