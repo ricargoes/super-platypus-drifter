@@ -9,8 +9,6 @@ func _ready():
 func _physics_process(delta):
 	var ships = $Orbit.get_overlapping_bodies()
 	for ship in ships:
-		print(ship.speed.length())
-		print(ship.is_lock)
 		if ship.is_lock:
 			var ship_from_planet = ship.position - position
 			var r = ship_from_planet.length()
