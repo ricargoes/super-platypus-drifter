@@ -43,6 +43,9 @@ frames = SubResource( 2 )
 wait_time = 0.3
 one_shot = true
 
+[node name="Infifuel" type="Timer" parent="."]
+one_shot = true
+
 [node name="ShipGUI" type="CanvasLayer" parent="."]
 
 [node name="Box" type="HBoxContainer" parent="ShipGUI"]

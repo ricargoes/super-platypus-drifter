@@ -32,6 +32,10 @@ func _physics_process(delta):
 func gui_update():
 	$ShipGUI/Box/BoostBar.value = boost_charge
 	$ShipGUI/Box/FuelBar.value = fuel
+	if $Infifuel.is_stopped():
+		$ShipGUI/Box/FuelBar.self_modulate = Color.white
+	else:
+		$ShipGUI/Box/FuelBar.self_modulate = Color.gold
 
 func die():
 	queue_free()
@@ -42,8 +46,7 @@ func pilot(delta):
 	elif Input.is_action_just_released("ship_boost"):
 		boost()
 		$BoosterAnim.hide()
-		
-
+	
 	if Input.is_action_pressed("ship_turn_left"):
 		rotation -= TURN_SPEED*delta
 	elif Input.is_action_pressed("ship_turn_right"):
@@ -60,7 +63,8 @@ func charge_boost(delta):
 
 func boost():
 	speed += ACCELERATION*Vector2(cos(rotation), sin(rotation))*boost_charge/MAX_BOOST_CHARGE
-	fuel = max(fuel - FUEL_PER_CHARGE*boost_charge, 0)
+	if $Infifuel.is_stopped():
+		fuel = max(fuel - FUEL_PER_CHARGE*boost_charge, 0)
 	boost_charge = 0
 	is_lock = false
 	$OrbitalUnlock.start()
@@ -84,3 +88,6 @@ func refill_fuel(fuel_amount):
 
 func is_orbitally_unlocked():
 	return not $OrbitalUnlock.is_stopped()
+
+func use_infifuel(time):
+	$Infifuel.start(time)
