@@ -8,7 +8,7 @@ func _ready():
 	get_node("AnimatedSprite").playing = true
 	set_process(true)
 	
-func _process(delta):
+func _process(_delta):
 	var body_to_bh = null
 	var sucking_factor = null
 	for body in affected_bodies:

@@ -17,7 +17,7 @@ func _ready():
 	set_physics_process(true)
 	set_process(true)
 
-func _process(delta):
+func _process(_delta):
 	gui_update()
 
 func _physics_process(delta):
