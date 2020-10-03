@@ -18,8 +18,7 @@ func _reset_game():
 
 	# Initial position for the ship
 	var ship_start = get_node("ShipStart")
-	var ship_node = load("res://actors/Ship.tscn")
-	ship = ship_node.instance()
+	ship = SPD.SHIP_SCENE.instance()
 	ship.position = ship_start.position
 	add_child(ship)
 
@@ -32,5 +31,5 @@ func _process(delta):
 
 func _update_game_state(delta):
 	# Ship warp
-	if ship.position.y < 0: ship.position.y = ship.position.y + 1080
-	if ship.position.y > 1080: ship.position.y = ship.position.y - 1080
+	if ship.position.y < 0: ship.position.y = ship.position.y + SPD.LEVEL_HEIGHT
+	if ship.position.y > 1080: ship.position.y = ship.position.y - SPD.LEVEL_HEIGHT

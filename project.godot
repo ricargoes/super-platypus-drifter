@@ -19,6 +19,10 @@ config/name="Super-platypus-drifter"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+SPD="*res://SPD.gd"
+
 [display]
 
 window/size/width=1920
