@@ -1,12 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://levels/space_placeholder.jpg" type="Texture" id=1]
+[ext_resource path="res://levels/background.png" type="Texture" id=1]
 [ext_resource path="res://levels/Background.gd" type="Script" id=2]
 
 [node name="Backgroud" type="Sprite"]
-scale = Vector2( 2, 2 )
+modulate = Color( 1, 1, 1, 0.435294 )
 texture = ExtResource( 1 )
 centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 960, 540 )
 script = ExtResource( 2 )
