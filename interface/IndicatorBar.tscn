@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://actors/indicator_bar_bg.png" type="Texture" id=1]
-[ext_resource path="res://actors/indicator_bar_fill.png" type="Texture" id=2]
-[ext_resource path="res://actors/IndicatorBar.gd" type="Script" id=3]
+[ext_resource path="res://interface/indicator_bar_bg.png" type="Texture" id=1]
+[ext_resource path="res://interface/indicator_bar_fill.png" type="Texture" id=2]
+[ext_resource path="res://interface/IndicatorBar.gd" type="Script" id=3]
 
 [node name="IndicatorBar" type="Node2D"]
 script = ExtResource( 3 )

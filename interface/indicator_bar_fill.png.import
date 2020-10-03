@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/indicator_bar_bg.png-82aa3137949cfa6c63a79bd24853e579.stex"
+path="res://.import/indicator_bar_fill.png-1b4dbdf039a531eaa35cf35fe39d15ee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://actors/indicator_bar_bg.png"
-dest_files=[ "res://.import/indicator_bar_bg.png-82aa3137949cfa6c63a79bd24853e579.stex" ]
+source_file="res://interface/indicator_bar_fill.png"
+dest_files=[ "res://.import/indicator_bar_fill.png-1b4dbdf039a531eaa35cf35fe39d15ee.stex" ]
 
 [params]
 
