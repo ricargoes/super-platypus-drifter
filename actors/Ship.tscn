@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://actors/Platypus_Ship1.png" type="Texture" id=1]
 [ext_resource path="res://actors/Ship.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://actors/Ship Animations & Effects/Propulsor_&_illumination1.png" type="Texture" id=5]
 [ext_resource path="res://actors/Ship Animations & Effects/Propulsor_&_illumination5.png" type="Texture" id=6]
 [ext_resource path="res://actors/Ship Animations & Effects/Propulsor_&_illumination3.png" type="Texture" id=7]
+[ext_resource path="res://interface/ShipGUI.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.375
@@ -39,3 +40,5 @@ frames = SubResource( 2 )
 [node name="UnlockedTime" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="ShipGUI" parent="." instance=ExtResource( 8 )]
