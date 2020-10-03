@@ -9,6 +9,9 @@ func _ready():
 func _physics_process(delta):
 	var ships = $Orbit.get_overlapping_bodies()
 	for ship in ships:
+		if ship.is_orbitally_unlocked():
+			continue
+		
 		var ship_from_planet = ship.position - position
 		var r = ship_from_planet.length()
 		var orbital_speed = r*orbit_speed
@@ -20,7 +23,6 @@ func _physics_process(delta):
 			ship.is_lock = true
 		else:
 			ship.speed -= BREAK_AMOUNT * delta * ship.speed.normalized()
-
 
 func _on_Orbit_body_exited(body):
 	body.is_lock = false

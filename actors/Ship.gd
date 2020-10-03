@@ -1,11 +1,11 @@
 extends KinematicBody2D
 
-const ACCELERATION = 1000
-const TURN_SPEED = 5
-const MAX_BOOST_CHARGE = 50
-const BOOST_CHARGE_RATE = 30
-const MAX_FUEL = 100
-const FUEL_PER_CHARGE = 0.2
+export var ACCELERATION = 1000
+export var TURN_SPEED = 5
+export var MAX_BOOST_CHARGE = 50
+export var BOOST_CHARGE_RATE = 30
+export var MAX_FUEL = 100
+export var FUEL_PER_CHARGE = 0.2
 var speed = Vector2(0, 0)
 var is_lock = false
 var boost_charge = 0
@@ -57,13 +57,13 @@ func charge_boost(delta):
 	boost_charge += BOOST_CHARGE_RATE*delta
 	if boost_charge >= MAX_BOOST_CHARGE:
 		boost()
-	
 
 func boost():
 	speed += ACCELERATION*Vector2(cos(rotation), sin(rotation))*boost_charge/MAX_BOOST_CHARGE
 	fuel = max(fuel - FUEL_PER_CHARGE*boost_charge, 0)
 	boost_charge = 0
 	is_lock = false
+	$OrbitalUnlock.start()
 
 func orienting_to(target_angle, delta, tolerance = 0.1):
 	var angle_diff = fposmod(get_rotation()-target_angle,2*PI)
@@ -81,3 +81,6 @@ func orienting_to(target_angle, delta, tolerance = 0.1):
 
 func refill_fuel(fuel_amount):
 	fuel = min(fuel+fuel_amount, MAX_FUEL)
+
+func is_orbitally_unlocked():
+	return not $OrbitalUnlock.is_stopped()
