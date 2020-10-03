@@ -45,10 +45,18 @@ one_shot = true
 
 [node name="ShipGUI" type="CanvasLayer" parent="."]
 
-[node name="FuelBar" type="TextureProgress" parent="ShipGUI"]
-margin_left = 944.0
-margin_right = 969.0
-margin_bottom = 124.0
+[node name="Box" type="HBoxContainer" parent="ShipGUI"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FuelBar" type="TextureProgress" parent="ShipGUI/Box"]
+margin_right = 25.0
+margin_bottom = 81.0
 value = 20.0
 texture_over = ExtResource( 10 )
 texture_progress = ExtResource( 11 )
@@ -57,12 +65,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BoostBar" type="TextureProgress" parent="ShipGUI"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = -40.0
-margin_right = 25.0
+[node name="BoostBar" type="TextureProgress" parent="ShipGUI/Box"]
+margin_left = 29.0
+margin_right = 115.0
+margin_bottom = 81.0
 value = 100.0
 texture_progress = ExtResource( 8 )
 __meta__ = {
