@@ -2,23 +2,16 @@ extends Node2D
 
 export var scroll_speed = 10.0
 onready var camera_start = get_node("CameraStart")
-var camera = null
+onready var camera = $Camera
 onready var ship_start = get_node("ShipStart")
 var ship = null
 
 func _ready():
-	# Load BG
-	var background = SPD.BACKGROUND_SCENE.instance()
-	add_child(background)
-	move_child(background, 0)
-
 	_reset_game()
 	set_process(true)
 
 func _reset_game():
 	# Initial position for the camera
-	camera = Camera2D.new()
-	camera.current = true
 	camera.position = camera_start.position
 	add_child(camera)
 
