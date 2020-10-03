@@ -42,6 +42,6 @@ func _update_game_state():
 	# Ship killed by level limits
 	var ship_camera_displacement = ship.position.x - camera.position.x
 	if ship_camera_displacement < -SPD.LEVEL_WIDTH/2:
-		ship.free()
+		ship.die()
 	if ship_camera_displacement > SPD.LEVEL_WIDTH/2:
-		ship.free()
+		ship.die()
