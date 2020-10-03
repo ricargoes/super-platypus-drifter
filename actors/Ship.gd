@@ -4,15 +4,19 @@ const ACCELERATION = 10
 const TURN_SPEED = 5
 const MAX_BOOST_CHARGE = 100
 const BOOST_CHARGE_RATE = 30
+const MAX_FUEL = 100
+const FUEL_PER_CHARGE = 0.2
 var speed = Vector2(0, 0)
 var is_lock = false
 var boost_charge = 0
+var fuel = 30
 
 signal charging_boost
 signal fuel_change
 
 func _ready():
-	$ShipGUI/VBoxContainer/BoostBar.max_value = MAX_BOOST_CHARGE
+	$ShipGUI/BoostBar.max_value = MAX_BOOST_CHARGE
+	$ShipGUI/FuelBar.max_value = MAX_FUEL
 	set_physics_process(true)
 
 func _physics_process(delta):
@@ -26,18 +30,15 @@ func _physics_process(delta):
 	gui_update()
 
 func gui_update():
-	$ShipGUI/VBoxContainer/BoostBar.value = boost_charge
+	$ShipGUI/BoostBar.value = boost_charge
+	$ShipGUI/FuelBar.value = fuel
 
 func die():
 	queue_free()
 
 func pilot(delta):
 	if Input.is_action_pressed("ship_boost"):
-		$BoosterAnim.show()
-		$BoosterAnim.play()
 		charge_boost(delta)
-		
-		$UnlockedTime.start()
 		is_lock = false
 	else:
 		boost()
@@ -50,6 +51,11 @@ func pilot(delta):
 			rotation += TURN_SPEED*delta
 
 func charge_boost(delta):
+	if fuel == 0:
+		return
+	$UnlockedTime.start()
+	$BoosterAnim.show()
+	$BoosterAnim.play()
 	boost_charge += BOOST_CHARGE_RATE*delta
 	if boost_charge >= MAX_BOOST_CHARGE:
 		boost()
@@ -57,6 +63,7 @@ func charge_boost(delta):
 
 func boost():
 	speed += ACCELERATION*boost_charge*Vector2(cos(rotation), sin(rotation))
+	fuel = max(fuel - FUEL_PER_CHARGE*boost_charge, 0)
 	boost_charge = 0
 
 func orienting_to(target_angle, delta, tolerance = 0.1):
@@ -75,3 +82,6 @@ func orienting_to(target_angle, delta, tolerance = 0.1):
 
 func is_unrestricted():
 	return not $UnlockedTime.is_stopped()
+
+func refill_fuel(fuel_amount):
+	fuel = min(fuel+fuel_amount, MAX_FUEL)
