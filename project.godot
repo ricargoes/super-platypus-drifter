@@ -36,6 +36,12 @@ ship_turn_right={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="ship"
+2d_physics/layer_2="obstacles"
+2d_physics/layer_3="collectables"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
