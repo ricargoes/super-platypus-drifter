@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-const ACCELERATION = 10
+const ACCELERATION = 1000
 const TURN_SPEED = 5
-const MAX_BOOST_CHARGE = 100
+const MAX_BOOST_CHARGE = 50
 const BOOST_CHARGE_RATE = 30
 const MAX_FUEL = 100
 const FUEL_PER_CHARGE = 0.2
@@ -10,9 +10,6 @@ var speed = Vector2(0, 0)
 var is_lock = false
 var boost_charge = 0
 var fuel = 30
-
-signal charging_boost
-signal fuel_change
 
 func _ready():
 	$ShipGUI/Box/BoostBar.max_value = MAX_BOOST_CHARGE
@@ -65,7 +62,7 @@ func charge_boost(delta):
 	
 
 func boost():
-	speed += ACCELERATION*boost_charge*Vector2(cos(rotation), sin(rotation))
+	speed += ACCELERATION*Vector2(cos(rotation), sin(rotation))*boost_charge/MAX_BOOST_CHARGE
 	fuel = max(fuel - FUEL_PER_CHARGE*boost_charge, 0)
 	boost_charge = 0
 

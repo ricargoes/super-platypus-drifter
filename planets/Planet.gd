@@ -1,7 +1,7 @@
 extends StaticBody2D
 
-var orbit_speed = PI/10
-const CATCHING_SPEED = 30
+export var orbit_speed = 2*PI/10
+const BREAK_AMOUNT = 1000
 
 func _ready():
 	set_physics_process(true)
@@ -9,19 +9,20 @@ func _ready():
 func _physics_process(delta):
 	var ships = $Orbit.get_overlapping_bodies()
 	for ship in ships:
+		var ship_from_planet = ship.position - position
+		var r = ship_from_planet.length()
+		var orbital_speed = r*orbit_speed
 		if ship.is_lock:
-			var ship_from_planet = ship.position - position
-			var r = ship_from_planet.length()
 			var angle = ship_from_planet.angle()
 			
 			ship.position = position + r*Vector2(cos(angle+orbit_speed*delta), sin(angle+orbit_speed*delta))
 			ship.orienting_to(ship_from_planet.angle()+ PI/2, delta)
-			ship.speed = Vector2(cos(ship.rotation), sin(ship.rotation))*CATCHING_SPEED
+			ship.speed = Vector2(cos(ship.rotation), sin(ship.rotation))*orbital_speed
 		elif not ship.is_unrestricted():
-			if ship.speed.length() < CATCHING_SPEED:
+			if ship.speed.length() < orbital_speed:
 				ship.is_lock = true
 			else:
-				ship.speed = ship.speed * 0.1
+				ship.speed -= BREAK_AMOUNT * delta * ship.speed.normalized()
 
 
 func _on_Orbit_body_exited(body):
