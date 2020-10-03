@@ -15,9 +15,13 @@ signal charging_boost
 signal fuel_change
 
 func _ready():
-	$ShipGUI/BoostBar.max_value = MAX_BOOST_CHARGE
-	$ShipGUI/FuelBar.max_value = MAX_FUEL
+	$ShipGUI/Box/BoostBar.max_value = MAX_BOOST_CHARGE
+	$ShipGUI/Box/FuelBar.max_value = MAX_FUEL
 	set_physics_process(true)
+	set_process(true)
+
+func _process(delta):
+	gui_update()
 
 func _physics_process(delta):
 	pilot(delta)
@@ -27,11 +31,10 @@ func _physics_process(delta):
 	var kinematic_collision = move_and_collide(speed*delta)
 	if kinematic_collision:
 		die()
-	gui_update()
 
 func gui_update():
-	$ShipGUI/BoostBar.value = boost_charge
-	$ShipGUI/FuelBar.value = fuel
+	$ShipGUI/Box/BoostBar.value = boost_charge
+	$ShipGUI/Box/FuelBar.value = fuel
 
 func die():
 	queue_free()
