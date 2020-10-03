@@ -39,21 +39,19 @@ func die():
 func pilot(delta):
 	if Input.is_action_pressed("ship_boost"):
 		charge_boost(delta)
-		is_lock = false
-	else:
+	elif Input.is_action_just_released("ship_boost"):
 		boost()
 		$BoosterAnim.hide()
-	
-	if not is_lock:
-		if Input.is_action_pressed("ship_turn_left"):
-			rotation -= TURN_SPEED*delta
-		elif Input.is_action_pressed("ship_turn_right"):
-			rotation += TURN_SPEED*delta
+		
+
+	if Input.is_action_pressed("ship_turn_left"):
+		rotation -= TURN_SPEED*delta
+	elif Input.is_action_pressed("ship_turn_right"):
+		rotation += TURN_SPEED*delta
 
 func charge_boost(delta):
 	if fuel == 0:
 		return
-	$UnlockedTime.start()
 	$BoosterAnim.show()
 	$BoosterAnim.play()
 	boost_charge += BOOST_CHARGE_RATE*delta
@@ -65,6 +63,7 @@ func boost():
 	speed += ACCELERATION*Vector2(cos(rotation), sin(rotation))*boost_charge/MAX_BOOST_CHARGE
 	fuel = max(fuel - FUEL_PER_CHARGE*boost_charge, 0)
 	boost_charge = 0
+	is_lock = false
 
 func orienting_to(target_angle, delta, tolerance = 0.1):
 	var angle_diff = fposmod(get_rotation()-target_angle,2*PI)
@@ -79,9 +78,6 @@ func orienting_to(target_angle, delta, tolerance = 0.1):
 			( angle_diff >= 0 and abs(angle_diff) >= PI ):
 			rotation += TURN_SPEED*delta
 		return false
-
-func is_unrestricted():
-	return not $UnlockedTime.is_stopped()
 
 func refill_fuel(fuel_amount):
 	fuel = min(fuel+fuel_amount, MAX_FUEL)

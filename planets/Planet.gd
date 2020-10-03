@@ -14,15 +14,12 @@ func _physics_process(delta):
 		var orbital_speed = r*orbit_speed
 		if ship.is_lock:
 			var angle = ship_from_planet.angle()
-			
 			ship.position = position + r*Vector2(cos(angle+orbit_speed*delta), sin(angle+orbit_speed*delta))
-			ship.orienting_to(ship_from_planet.angle()+ PI/2, delta)
 			ship.speed = Vector2(cos(ship.rotation), sin(ship.rotation))*orbital_speed
-		elif not ship.is_unrestricted():
-			if ship.speed.length() < orbital_speed:
-				ship.is_lock = true
-			else:
-				ship.speed -= BREAK_AMOUNT * delta * ship.speed.normalized()
+		if ship.speed.length() < orbital_speed:
+			ship.is_lock = true
+		else:
+			ship.speed -= BREAK_AMOUNT * delta * ship.speed.normalized()
 
 
 func _on_Orbit_body_exited(body):
