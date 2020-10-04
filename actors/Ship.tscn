@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://actors/Platypus_Ship1.png" type="Texture" id=1]
 [ext_resource path="res://actors/Ship.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://interface/Conversations.tscn" type="PackedScene" id=9]
 [ext_resource path="res://interface/Fuel meter.png" type="Texture" id=10]
 [ext_resource path="res://interface/Fuel meter liquid.png" type="Texture" id=11]
+[ext_resource path="res://actors/Wrapper.gd" type="Script" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.375
@@ -80,3 +81,6 @@ __meta__ = {
 }
 
 [node name="Conversations" parent="ShipGUI" instance=ExtResource( 9 )]
+
+[node name="Wrapper" type="Node" parent="."]
+script = ExtResource( 12 )
