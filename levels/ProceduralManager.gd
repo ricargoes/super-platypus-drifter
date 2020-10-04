@@ -44,51 +44,87 @@ var cells = []
 
 # Editor configuration with defaul values
 export(float) var initial_density = 1
-export(int) var density_width = 1960
-export(float) var density_increments = 0.1
+export(int) var density_change_distance = 1960
+export(float) var density_change_ammount = 0.1
+
+export(float) var initial_tunnel_widht = 560
+export(int) var tunnel_widht_change_distance = 1960
+export(float) var tunnel_widht_change_ammount = 10
+export(int) var tunnel_widht_change_minimun = 150
+
 export(GOODLUCK_OPTIONS) var goodluck = 0
 
 # Locals
-onready var current_density = initial_density
 onready var camera = $"../Camera"
 onready var starting_position = camera.position.x
 onready var last_cell = int(camera.position.x) % int(SPD.LEVEL_WIDTH)
+var relative_position = null
+var current_density = initial_density
+var current_tunnel_width = initial_tunnel_widht
+var current_cell = null
 
-# Called when the node enters the scene tree for the first time.
+# Update script locals
+func _update_locals():
+	relative_position = camera.position.x - starting_position
+	current_cell = int(int(relative_position) / SPD.LEVEL_WIDTH)
+	current_density = initial_density + abs(
+		int(relative_position / density_change_distance)
+		* density_change_ammount
+	)
+	current_tunnel_width = initial_tunnel_widht + abs(
+		int(relative_position / tunnel_widht_change_distance)
+		* tunnel_widht_change_ammount
+	)
+	current_tunnel_width = \
+		max(current_tunnel_width, tunnel_widht_change_minimun)
+
+func _new_cell(cell_number):
+	# TODO: Handle cell generation
+	print(
+		"Generating cell " + str(cell_number)
+		+ " with density " + str(current_density)
+		+ " and tunnel width " + str(current_tunnel_width) + " .")
+	return Cell.new()
+
+func _clear_cell(cell):
+	for entity in cell.entities:
+		entity.free()
+		print("Cleared.")
+
+func _init_cells():
+	for cell in cells:
+		_clear_cell(cell)
+	cells = []
+	cells.push_back(_new_cell(current_cell-2))
+	cells.push_back(_new_cell(current_cell-1))
+	cells.push_back(_new_cell(current_cell))
+	cells.push_back(_new_cell(current_cell+1))
+	cells.push_back(_new_cell(current_cell+2))
+
 func _ready():
-	cells = [
-		_new_cell(),
-		_new_cell(),
-		_new_cell(),
-		_new_cell(),
-		_new_cell(),
-	]
+	_update_locals()
+	_init_cells()
 	set_process(true)
 
 func _shift_cells(backwards=false):
 	if not backwards:
+		print("Clearing cell " + str(current_cell - 3))
+		_clear_cell(cells[0])
 		cells = [cells[1], cells[2], cells[3], cells[4]]
-		cells.push_back(_new_cell())
+		cells.push_back(_new_cell(current_cell + 2))
 	else:
+		print("Clearing cell " + str(current_cell + 3))
+		_clear_cell(cells[4])
 		cells = [cells[0], cells[1], cells[2], cells[3]]
-		cells.push_front(_new_cell())
+		cells.push_front(_new_cell(current_cell - 2))
 
-func _new_cell(): return Cell.new()
+func _process(_delta):
+	_update_locals()
 
-func _process(delta):
-	var relative_position = starting_position - camera.position.x
-
-	# Update density
-	current_density = initial_density + abs(
-		int(relative_position / density_width) * density_increments
-	)
-	print(current_density)
-
-	# Cell generation
-	var cell_number = int(relative_position) % int(SPD.LEVEL_WIDTH)
-	while cell_number > last_cell:
+	# Cell shifting and generation
+	while current_cell > last_cell:
 		_shift_cells()
 		last_cell += 1
-	while cell_number < last_cell:
+	while current_cell < last_cell:
 		_shift_cells(true)
 		last_cell -= 1
