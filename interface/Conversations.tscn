@@ -81,3 +81,5 @@ text = "probando"
 readonly = true
 draw_spaces = true
 wrap_enabled = true
+
+[node name="Speak" type="AudioStreamPlayer" parent="."]

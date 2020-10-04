@@ -16,6 +16,13 @@ onready var textures = {
 	Speakers.Royal: preload("res://interface/characters/platypuness_anim.tres"),
 }
 
+onready var audios = {
+	Speakers.Pilot: preload("res://interface/characters/pilot.wav"),
+	Speakers.Council: preload("res://interface/characters/council.wav"),
+	Speakers.Dingo: preload("res://interface/characters/dingo.ogg"),
+	Speakers.Royal: preload("res://interface/characters/royal.wav"),
+}
+
 func _input(event):
 	if event.is_action_released("ui_accept") and visible:
 		next()
@@ -28,6 +35,8 @@ func begin_conversation():
 func refresh():
 	$Conversations/MarginContainer/HBoxContainer/TextureRect.texture = textures[sequence[counter]["speaker"]]
 	$Conversations/MarginContainer/HBoxContainer/TextEdit.text = sequence[counter]["text"]
+	$Speak.stream = audios[sequence[counter]["speaker"]]
+	$Speak.play()
 	show()
 
 func next():
