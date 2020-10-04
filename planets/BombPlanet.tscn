@@ -1,0 +1,74 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://planets/Planet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://planets/Planet 4/planet4.png" type="Texture" id=2]
+[ext_resource path="res://planets/Planet 4/planet6.png" type="Texture" id=3]
+[ext_resource path="res://planets/Planet 4/planet7.png" type="Texture" id=4]
+[ext_resource path="res://planets/Planet 4/planet11.png" type="Texture" id=5]
+[ext_resource path="res://planets/Planet 4/planet10.png" type="Texture" id=6]
+[ext_resource path="res://planets/Planet 4/planet8.png" type="Texture" id=7]
+[ext_resource path="res://planets/Planet 4/planet9.png" type="Texture" id=8]
+[ext_resource path="res://planets/Planet 4/planet5.png" type="Texture" id=9]
+[ext_resource path="res://planets/Planet 4/planet12.png" type="Texture" id=10]
+[ext_resource path="res://planets/Planet 4/planet13.png" type="Texture" id=11]
+[ext_resource path="res://planets/Planet 4/planet16.png" type="Texture" id=12]
+[ext_resource path="res://planets/BombPlanet.gd" type="Script" id=13]
+[ext_resource path="res://planets/Planet 4/planet22.png" type="Texture" id=14]
+[ext_resource path="res://planets/Planet 4/planet18.png" type="Texture" id=15]
+[ext_resource path="res://planets/Planet 4/planet25.png" type="Texture" id=16]
+[ext_resource path="res://planets/Planet 4/planet23.png" type="Texture" id=17]
+[ext_resource path="res://planets/Planet 4/planet17.png" type="Texture" id=18]
+[ext_resource path="res://planets/Planet 4/planet20.png" type="Texture" id=19]
+[ext_resource path="res://planets/Planet 4/planet24.png" type="Texture" id=20]
+[ext_resource path="res://planets/Planet 4/planet21.png" type="Texture" id=21]
+[ext_resource path="res://planets/Planet 4/planet19.png" type="Texture" id=22]
+[ext_resource path="res://planets/Planet 4/planet14.png" type="Texture" id=23]
+[ext_resource path="res://planets/Planet 4/planet15.png" type="Texture" id=24]
+[ext_resource path="res://planets/Planet 4/Planet4_off.png" type="Texture" id=25]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 25 ), ExtResource( 2 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": false,
+"name": "default",
+"speed": 11.0
+} ]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 60.8334
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 12 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 14 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "default",
+"speed": 15.0
+} ]
+
+[node name="BombPlanet" instance=ExtResource( 1 )]
+script = ExtResource( 13 )
+
+[node name="Sprite" parent="." index="0"]
+visible = false
+position = Vector2( 11, 6 )
+texture = ExtResource( 2 )
+
+[node name="BombAnim" type="AnimatedSprite" parent="." index="1" groups=[
+"planets",
+]]
+position = Vector2( 11, 6 )
+frames = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource( 3 )
+
+[node name="ExplosionAnim" type="AnimatedSprite" parent="." index="3"]
+visible = false
+position = Vector2( 11, 6 )
+frames = SubResource( 2 )
+
+[node name="Orbit" parent="." index="4"]
+visible = false
+[connection signal="animation_finished" from="BombAnim" to="." method="_on_BombAnim_animation_finished"]
+[connection signal="animation_finished" from="ExplosionAnim" to="." method="_on_ExplosionAnim_animation_finished"]
+[connection signal="body_entered" from="Orbit" to="." method="_on_Orbit_body_entered"]

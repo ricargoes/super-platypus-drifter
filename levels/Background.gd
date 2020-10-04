@@ -6,4 +6,4 @@ func _ready():
 		-SPD.LEVEL_WIDTH, 0,
 		SPD.MAX_SCREENS * SPD.LEVEL_WIDTH, SPD.LEVEL_HEIGHT)
 	)
-	root.global_translate(Vector2(-SPD.LEVEL_WIDTH, 0))
+	root.global_translate(Vector2(-SPD.LEVEL_WIDTH/2, 0))

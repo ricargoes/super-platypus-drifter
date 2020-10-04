@@ -20,6 +20,7 @@ animations = [ {
 radius = 11.0708
 
 [node name="DarkEnergy" type="Area2D"]
+collision_layer = 4
 script = ExtResource( 7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
