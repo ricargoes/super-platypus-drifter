@@ -1,10 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://interface/Title_1.png" type="Texture" id=2]
 [ext_resource path="res://interface/theme.tres" type="Theme" id=3]
+[ext_resource path="res://interface/dialogue_cloud.png" type="Texture" id=4]
+[ext_resource path="res://interface/characters/billyduck_anim.tres" type="Texture" id=5]
 
-[sub_resource type="StyleBoxEmpty" id=1]
+[sub_resource type="StyleBoxLine" id=1]
+grow_begin = -3.0
+grow_end = -3.0
+thickness = 2
+vertical = true
 
 [node name="Main" type="CenterContainer"]
 anchor_right = 1.0
@@ -17,9 +23,9 @@ __meta__ = {
 
 [node name="Main" type="VBoxContainer" parent="."]
 margin_left = 660.0
-margin_top = 95.0
+margin_top = 70.0
 margin_right = 1260.0
-margin_bottom = 985.0
+margin_bottom = 1010.0
 rect_min_size = Vector2( 600, 0 )
 custom_constants/separation = 30
 alignment = 1
@@ -62,22 +68,76 @@ rect_min_size = Vector2( 300, 40 )
 size_flags_horizontal = 4
 text = "Story mode"
 
-[node name="HSeparator" type="HSeparator" parent="Main"]
+[node name="HSeparator" type="NinePatchRect" parent="Main"]
 margin_top = 790.0
 margin_right = 600.0
-margin_bottom = 820.0
+margin_bottom = 870.0
+rect_min_size = Vector2( 0, 80 )
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 91.1821, 33.2535 )
+patch_margin_left = 9
+patch_margin_top = 6
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="Margin" type="MarginContainer" parent="Main/HSeparator"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/HSeparator/Margin"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 595.0
+margin_bottom = 75.0
+custom_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="Main/HSeparator/Margin/HBoxContainer"]
+margin_right = 80.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 80, 0 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="VSeparator" type="VSeparator" parent="Main/HSeparator/Margin/HBoxContainer"]
+margin_left = 90.0
+margin_right = 94.0
+margin_bottom = 70.0
 custom_styles/separator = SubResource( 1 )
-custom_constants/separation = 30
+
+[node name="TextEdit" type="TextEdit" parent="Main/HSeparator/Margin/HBoxContainer"]
+margin_left = 104.0
+margin_right = 590.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+text = "Choose Mode"
+readonly = true
+wrap_enabled = true
 
 [node name="Quit" type="Button" parent="Main"]
 margin_left = 150.0
-margin_top = 850.0
+margin_top = 900.0
 margin_right = 450.0
-margin_bottom = 890.0
+margin_bottom = 940.0
 rect_min_size = Vector2( 300, 40 )
 size_flags_horizontal = 4
 text = "Quit"
+[connection signal="mouse_entered" from="Main/Tutorial" to="." method="_on_Tutorial_mouse_entered"]
+[connection signal="mouse_exited" from="Main/Tutorial" to="." method="default_explanation"]
 [connection signal="pressed" from="Main/Tutorial" to="." method="_on_Tutorial_pressed"]
+[connection signal="mouse_entered" from="Main/Endless" to="." method="_on_Endless_mouse_entered"]
+[connection signal="mouse_exited" from="Main/Endless" to="." method="default_explanation"]
 [connection signal="pressed" from="Main/Endless" to="." method="_on_Endless_pressed"]
+[connection signal="mouse_entered" from="Main/Story" to="." method="_on_Story_mouse_entered"]
+[connection signal="mouse_exited" from="Main/Story" to="." method="default_explanation"]
 [connection signal="pressed" from="Main/Story" to="." method="_on_Story_pressed"]
+[connection signal="mouse_entered" from="Main/Quit" to="." method="_on_Quit_mouse_entered"]
+[connection signal="mouse_exited" from="Main/Quit" to="." method="default_explanation"]
 [connection signal="pressed" from="Main/Quit" to="." method="_on_Quit_pressed"]
