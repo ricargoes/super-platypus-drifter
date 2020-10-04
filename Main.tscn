@@ -1,11 +1,83 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://interface/Title_1.png" type="Texture" id=2]
+[ext_resource path="res://interface/theme.tres" type="Theme" id=3]
 
-[node name="Main" type="Control"]
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="Main" type="CenterContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Main" type="VBoxContainer" parent="."]
+margin_left = 660.0
+margin_top = 95.0
+margin_right = 1260.0
+margin_bottom = 985.0
+rect_min_size = Vector2( 600, 0 )
+custom_constants/separation = 30
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Main"]
+margin_right = 600.0
+margin_bottom = 550.0
+rect_min_size = Vector2( 0, 550 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Tutorial" type="Button" parent="Main"]
+margin_left = 150.0
+margin_top = 580.0
+margin_right = 450.0
+margin_bottom = 620.0
+rect_min_size = Vector2( 300, 40 )
+size_flags_horizontal = 4
+text = "Tutorial"
+
+[node name="Endless" type="Button" parent="Main"]
+margin_left = 150.0
+margin_top = 650.0
+margin_right = 450.0
+margin_bottom = 690.0
+rect_min_size = Vector2( 300, 40 )
+size_flags_horizontal = 4
+text = "Endless mode"
+
+[node name="Story" type="Button" parent="Main"]
+margin_left = 150.0
+margin_top = 720.0
+margin_right = 450.0
+margin_bottom = 760.0
+rect_min_size = Vector2( 300, 40 )
+size_flags_horizontal = 4
+text = "Story mode"
+
+[node name="HSeparator" type="HSeparator" parent="Main"]
+margin_top = 790.0
+margin_right = 600.0
+margin_bottom = 820.0
+custom_styles/separator = SubResource( 1 )
+custom_constants/separation = 30
+
+[node name="Quit" type="Button" parent="Main"]
+margin_left = 150.0
+margin_top = 850.0
+margin_right = 450.0
+margin_bottom = 890.0
+rect_min_size = Vector2( 300, 40 )
+size_flags_horizontal = 4
+text = "Quit"
+[connection signal="pressed" from="Main/Tutorial" to="." method="_on_Tutorial_pressed"]
+[connection signal="pressed" from="Main/Endless" to="." method="_on_Endless_pressed"]
+[connection signal="pressed" from="Main/Story" to="." method="_on_Story_pressed"]
+[connection signal="pressed" from="Main/Quit" to="." method="_on_Quit_pressed"]
