@@ -18,7 +18,7 @@ func _ready():
 	if random_velocity:
 		velocity = Vector2(randf() - 0.5, randf() - 0.5)*120
 	
-	linear_velocity = velocity
+	if velocity: linear_velocity = velocity
 
 func _on_Asteroid_body_entered(body):
 	if body in get_tree().get_nodes_in_group("planets"): destroy()
