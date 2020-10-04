@@ -7,4 +7,6 @@
 modulate = Color( 1, 1, 1, 0.435294 )
 texture = ExtResource( 1 )
 centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 5760, 1080 )
 script = ExtResource( 2 )
