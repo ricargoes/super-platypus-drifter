@@ -17,7 +17,7 @@ func set_explanation(text):
 	$Main/HSeparator/Margin/HBoxContainer/TextEdit.text = text
 
 func default_explanation():
-	set_explanation("Choose mode")
+	set_explanation("Pick your poison!")
 
 func _on_Tutorial_mouse_entered():
 	set_explanation("Learn to play")

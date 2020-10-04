@@ -117,7 +117,7 @@ margin_left = 104.0
 margin_right = 590.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
-text = "Choose Mode"
+text = "Pick your poison!"
 readonly = true
 wrap_enabled = true
 
