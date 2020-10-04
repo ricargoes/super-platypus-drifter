@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://actors/Platypus_Ship1.png" type="Texture" id=1]
 [ext_resource path="res://actors/Ship.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://actors/Ship Animations & Effects/Propulsor_&_illumination5.png" type="Texture" id=6]
 [ext_resource path="res://actors/Ship Animations & Effects/Propulsor_&_illumination3.png" type="Texture" id=7]
 [ext_resource path="res://interface/Turbo boost.png" type="Texture" id=8]
+[ext_resource path="res://interface/Conversations.tscn" type="PackedScene" id=9]
 [ext_resource path="res://interface/Fuel meter.png" type="Texture" id=10]
 [ext_resource path="res://interface/Fuel meter liquid.png" type="Texture" id=11]
 
@@ -77,3 +78,5 @@ texture_progress = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Conversations" parent="ShipGUI" instance=ExtResource( 9 )]
