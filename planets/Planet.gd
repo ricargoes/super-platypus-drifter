@@ -5,7 +5,8 @@ export var planet_scale = 1
 const BREAK_AMOUNT = 1000
 
 func _ready():
-	$Sprite.scale = Vector2(planet_scale, planet_scale)
+	$Sprite.scale *= planet_scale
+	$OrbitalRing.scale *= planet_scale
 	var planet_shape = CircleShape2D.new()
 	planet_shape.radius = $CollisionShape2D.shape.radius*planet_scale
 	$CollisionShape2D.shape = planet_shape
@@ -15,6 +16,8 @@ func _ready():
 	set_physics_process(true)
 
 func _physics_process(delta):
+	$OrbitalRing.flip_h = true if orbit_speed > 0 else false
+	$OrbitalRing.rotate(orbit_speed*delta)
 	var ships = $Orbit.get_overlapping_bodies()
 	for ship in ships:
 		if ship.is_orbitally_unlocked():
