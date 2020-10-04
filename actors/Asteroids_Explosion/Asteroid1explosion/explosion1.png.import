@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Planet2.png-20ebdbf9e07ebe268b89e6608f9e5271.stex"
+path="res://.import/explosion1.png-beecf2ce2bcbadf657e426271d944a8c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://planets/Planet2.png"
-dest_files=[ "res://.import/Planet2.png-20ebdbf9e07ebe268b89e6608f9e5271.stex" ]
+source_file="res://actors/Asteroids_Explosion/Asteroid1explosion/explosion1.png"
+dest_files=[ "res://.import/explosion1.png-beecf2ce2bcbadf657e426271d944a8c.stex" ]
 
 [params]
 

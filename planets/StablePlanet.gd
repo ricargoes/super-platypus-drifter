@@ -1,9 +1,11 @@
 extends "res://planets/Planet.gd"
 
 var textures = [
-	preload("res://planets/Planet 1.png"), 
-	preload("res://planets/Planet2.png"), 
-	preload("res://planets/planet3.png")
+	preload("res://planets/planet1.png"), 
+	preload("res://planets/planet2.png"), 
+	preload("res://planets/planet3.png"),
+	preload("res://planets/planet5.png"),
+	preload("res://planets/planet6.png"),
 ]
 
 export var random_texture = true

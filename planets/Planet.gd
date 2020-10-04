@@ -1,9 +1,17 @@
 extends StaticBody2D
 
 export var orbit_speed = 2*PI/10
+export var planet_scale = 1
 const BREAK_AMOUNT = 1000
 
 func _ready():
+	$Sprite.scale = Vector2(planet_scale, planet_scale)
+	var planet_shape = CircleShape2D.new()
+	planet_shape.radius = $CollisionShape2D.shape.radius*planet_scale
+	$CollisionShape2D.shape = planet_shape
+	var orbit_shape = CircleShape2D.new()
+	orbit_shape.radius = $Orbit/CollisionShape2D.shape.radius*planet_scale
+	$Orbit/CollisionShape2D.shape = orbit_shape
 	set_physics_process(true)
 
 func _physics_process(delta):
