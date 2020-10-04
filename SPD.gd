@@ -7,4 +7,3 @@ var MAX_SCREENS = 1000
 
 # Preloaded scenes
 var SHIP_SCENE = preload("res://actors/Ship.tscn")
-var BACKGROUND_SCENE = preload("res://levels/Background.tscn")
