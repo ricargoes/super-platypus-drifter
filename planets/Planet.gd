@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 export var orbit_speed = 2*PI/10
-export var planet_scale = 1
+export var planet_scale = 1.0
 const BREAK_AMOUNT = 1000
 
 func _ready():
