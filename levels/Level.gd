@@ -7,10 +7,6 @@ onready var ship_start = get_node("ShipStart")
 var ship = null
 
 func _ready():
-	_reset_game()
-	set_process(true)
-
-func _reset_game():
 	# Initial position for the camera
 	camera.position = camera_start.position
 
@@ -18,13 +14,14 @@ func _reset_game():
 	ship = SPD.SHIP_SCENE.instance()
 	ship.position = ship_start.position
 	add_child(ship)
+	set_process(true)
 
 func _process(delta):
 	camera.global_translate(Vector2(scroll_speed * delta, 0))
 	if ship:
 		_update_game_state()
 	else:
-		_reset_game()
+		get_tree().reload_current_scene()
 
 func _update_game_state():
 	# Ship warp
