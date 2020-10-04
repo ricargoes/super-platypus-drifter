@@ -11,10 +11,9 @@ func _ready():
 	
 	linear_velocity = velocity
 
-
-
 func _on_Asteroid_body_entered(body):
 	if body in get_tree().get_nodes_in_group("planets"): destroy()
+	if body.has_method("die"): body.die()
 
 func destroy():
 	queue_free()
