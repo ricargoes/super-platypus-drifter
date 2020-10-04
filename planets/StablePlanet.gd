@@ -12,7 +12,7 @@ export var texture_number = 0
 func _ready():
 	var index
 	if random_texture:
-		seed("tutupa".hash())
+		randomize()
 		index = randi() % textures.size()
 	else:
 		index = texture_number
