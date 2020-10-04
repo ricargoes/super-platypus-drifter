@@ -3,6 +3,10 @@ extends "res://planets/Planet.gd"
 export var countdown = 5.0
 
 func _ready():
+	$BombAnim.scale *= planet_scale
+	$BombAnim.position *= planet_scale
+	$ExplosionAnim.scale *= planet_scale
+	$ExplosionAnim.position *= planet_scale
 	$BombAnim.speed_scale = 1.0/countdown
 
 func _on_Orbit_body_entered(body):
