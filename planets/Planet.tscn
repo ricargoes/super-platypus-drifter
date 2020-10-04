@@ -4,12 +4,14 @@
 [ext_resource path="res://planets/StablePlanet.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 110.0
+radius = 109.645
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 194.161
+radius = 164.301
 
-[node name="Planet" type="StaticBody2D"]
+[node name="Planet" type="StaticBody2D" groups=[
+"planets",
+]]
 collision_layer = 2
 script = ExtResource( 2 )
 
