@@ -13,7 +13,6 @@ func _ready():
 func _reset_game():
 	# Initial position for the camera
 	camera.position = camera_start.position
-	add_child(camera)
 
 	# Initial position for the ship
 	ship = SPD.SHIP_SCENE.instance()
