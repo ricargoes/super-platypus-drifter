@@ -36,6 +36,9 @@ func gui_update():
 		$ShipGUI/Box/FuelBar.self_modulate = Color.white
 	else:
 		$ShipGUI/Box/FuelBar.self_modulate = Color.gold
+	
+	if $Bubble.visible:
+		$Bubble.rotation = -rotation
 
 func die():
 	queue_free()
@@ -91,3 +94,10 @@ func is_orbitally_unlocked():
 
 func use_infifuel(time):
 	$Infifuel.start(time)
+
+func show_bubble(text):
+	$Bubble/Text.text = text
+	$Bubble.show()
+
+func _on_Timer_timeout():
+	$Bubble.hide()

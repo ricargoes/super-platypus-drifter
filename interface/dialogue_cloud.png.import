@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Evil Dingo Django1.png-e851a5ede2908a723596f52b10922c5d.stex"
+path="res://.import/dialogue_cloud.png-99ef267d20e2873e9c9cd996fa7713e3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interface/characters/Evil Dingo Django1.png"
-dest_files=[ "res://.import/Evil Dingo Django1.png-e851a5ede2908a723596f52b10922c5d.stex" ]
+source_file="res://interface/dialogue_cloud.png"
+dest_files=[ "res://.import/dialogue_cloud.png-99ef267d20e2873e9c9cd996fa7713e3.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
