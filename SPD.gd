@@ -30,15 +30,18 @@ class SpaceEntityInfo:
 # Space entities info data
 var SPACE_ENTITIES_INFO = {
 	SPACE_ENTITIES.PLANET: SpaceEntityInfo.new(
-		preload("res://planets/Planet.tscn"), 1),
+		preload("res://planets/Planet.tscn"), 0),
 	SPACE_ENTITIES.ASTEROID: SpaceEntityInfo.new(
 		preload("res://actors/Asteroid.tscn"), 0.3),
 	SPACE_ENTITIES.BLACKHOLE: SpaceEntityInfo.new(
 		preload("res://actors/BlackHole.tscn"), 0.3),
 	SPACE_ENTITIES.BOMBPLANET: SpaceEntityInfo.new(
-		preload("res://planets/BombPlanet.tscn"), 0.1),
+		preload("res://planets/BombPlanet.tscn"), 0.9),
+}
+
+var PLANET_ENTITIES_INFO = {
 	SPACE_ENTITIES.FUELCAN: SpaceEntityInfo.new(
-		preload("res://powerups/FuelCan.tscn"), 1),
+		preload("res://powerups/FuelCan.tscn"), 0.8),
 	SPACE_ENTITIES.DARKENERGY: SpaceEntityInfo.new(
-		preload("res://powerups/DarkEnergy.tscn"), 10),
+		preload("res://powerups/DarkEnergy.tscn"), 0.95),
 }
