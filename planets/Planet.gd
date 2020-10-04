@@ -18,7 +18,7 @@ func _physics_process(delta):
 		if ship.is_lock:
 			var angle = ship_from_planet.angle()
 			ship.position = position + r*Vector2(cos(angle+orbit_speed*delta), sin(angle+orbit_speed*delta))
-			ship.speed = Vector2(cos(ship.rotation), sin(ship.rotation))*orbital_speed
+			ship.speed = Vector2(cos(angle+sign(orbit_speed)*PI/2), sin(angle+sign(orbit_speed)*PI/2))*orbital_speed
 		if ship.speed.length() < abs(orbital_speed):
 			ship.is_lock = true
 		else:
