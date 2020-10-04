@@ -33,7 +33,7 @@ var cells = []
 
 
 # Editor configuration with defaul values
-export(float) var initial_density = 5
+export(float) var initial_density = 3
 export(int) var density_change_distance = 1960
 export(float) var density_change_ammount = 1
 
@@ -42,10 +42,10 @@ export(int) var variety_change_distance = 1960
 export(float) var variety_change_ammount = 0.5
 export(float) var variety_reduction_factor = 1
 
-export(float) var initial_tunnel_widht = 320
+export(float) var initial_tunnel_widht = 450
 export(int) var tunnel_widht_change_distance = 1960
-export(float) var tunnel_widht_change_ammount = 5
-export(int) var tunnel_widht_change_minimun = 120
+export(float) var tunnel_widht_change_ammount = 10
+export(int) var tunnel_widht_change_minimun = 150
 
 export(bool) var goodluck_enabled = false
 
@@ -96,23 +96,21 @@ func _get_valid_y_coord(cell_info, cell_x):
 			or cell_info.tunnel_generator == TUNNEL_GENERATORS.SAW:
 		var minimun = 0
 		var maximun = SPD.LEVEL_HEIGHT
-		var inner_cell_point = fmod(cell_x, SPD.LEVEL_WIDTH)
-		var inner_cell_point_factor = inner_cell_point / SPD.LEVEL_WIDTH
-		var sine_in_cell_x = sin(2 * PI * inner_cell_point_factor)
-		var sine_in_safezone = (sine_in_cell_x + 1) / 2 * SPD.LEVEL_HEIGHT
-		if sine_in_safezone - camera_tunnel_width < 0:
-			minimun = sine_in_safezone + camera_tunnel_width
+		var cell_x_as_factor = cell_x / float(SPD.LEVEL_WIDTH)
+		var base_sine = sin(2 * PI * cell_x_as_factor)
+		var safezone_height = (base_sine + 1) / 2 * SPD.LEVEL_HEIGHT
+		if safezone_height - camera_tunnel_width < 0:
+			minimun = safezone_height + camera_tunnel_width
 			maximun = SPD.LEVEL_HEIGHT
-		elif sine_in_safezone + camera_tunnel_width > SPD.LEVEL_HEIGHT:
+		elif safezone_height + camera_tunnel_width > SPD.LEVEL_HEIGHT:
 			minimun = 0
-			maximun = sine_in_safezone - camera_tunnel_width
-			return rnd.randi_range(minimun, maximun)
+			maximun = safezone_height - camera_tunnel_width
 		else:
 			if rnd.randi_range(0, 1) == 0:
 				minimun = 0
-				maximun = sine_in_safezone - camera_tunnel_width
+				maximun = safezone_height - camera_tunnel_width
 			else:
-				minimun = sine_in_safezone + camera_tunnel_width
+				minimun = safezone_height + camera_tunnel_width
 				maximun = SPD.LEVEL_HEIGHT
 		return rnd.randi_range(minimun, maximun)
 
@@ -143,12 +141,15 @@ func _init_random_entity(cell_info, cell_number):
 	var new_entity = \
 		SPD.SPACE_ENTITIES_INFO[selected_entity].scene.instance()
 
-	var entity_x = \
-		rnd.randi_range(0, SPD.LEVEL_WIDTH) + cell_number * SPD.LEVEL_WIDTH
+	var entity_cell_x = rnd.randi_range(0, SPD.LEVEL_WIDTH)
 	new_entity.set_global_position(Vector2(
-		entity_x,
-		_get_valid_y_coord(cell_info, entity_x)
+		entity_cell_x + cell_number * SPD.LEVEL_WIDTH,
+		_get_valid_y_coord(cell_info, entity_cell_x)
 	))
+
+	if selected_entity == SPD.SPACE_ENTITIES.PLANET:
+		# TODO: Spawn fuel or dark energy
+		pass
 
 	if selected_entity == SPD.SPACE_ENTITIES.ASTEROID:
 		if rnd.randi_range(0, 1) == 1:
