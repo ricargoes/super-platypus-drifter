@@ -45,7 +45,16 @@ var cells = []
 # Editor configuration with defaul values
 export(float) var initial_density = 1
 export(int) var density_change_distance = 1960
-export(float) var density_change_ammount = 0.1
+export(float) var density_change_ammount = 0.5
+
+export(float) var initial_variety = 1
+export(int) var variety_change_distance = 1960
+export(float) var variety_change_ammount = 0.5
+export(float) var variety_reduction_factor = 4
+
+export(float) var initial_fuel_factor = 0.5
+export(int) var fuel_factor_change_distance = 1960
+export(float) var fuel_factor_change_ammount = 0
 
 export(float) var initial_tunnel_widht = 560
 export(int) var tunnel_widht_change_distance = 1960
@@ -60,6 +69,8 @@ onready var starting_position = camera.position.x
 onready var last_cell = int(camera.position.x) % int(SPD.LEVEL_WIDTH)
 var relative_position = null
 var current_density = initial_density
+var current_variety = initial_variety
+var current_fuel_factor = initial_fuel_factor
 var current_tunnel_width = initial_tunnel_widht
 var current_cell = null
 
@@ -71,7 +82,15 @@ func _update_locals():
 		int(relative_position / density_change_distance)
 		* density_change_ammount
 	)
-	current_tunnel_width = initial_tunnel_widht + abs(
+	current_variety = initial_variety + abs(
+		int(relative_position / variety_change_distance)
+		* variety_change_ammount
+	)
+	current_fuel_factor = initial_fuel_factor + abs(
+		int(relative_position / fuel_factor_change_distance)
+		* fuel_factor_change_ammount
+	)
+	current_tunnel_width = initial_tunnel_widht - abs(
 		int(relative_position / tunnel_widht_change_distance)
 		* tunnel_widht_change_ammount
 	)
@@ -79,12 +98,23 @@ func _update_locals():
 		max(current_tunnel_width, tunnel_widht_change_minimun)
 
 func _new_cell(cell_number):
-	# TODO: Handle cell generation
 	print(
-		"Generating cell " + str(cell_number)
-		+ " with density " + str(current_density)
-		+ " and tunnel width " + str(current_tunnel_width) + " .")
-	return Cell.new()
+		"Generating cell " + str(cell_number) + " :"
+		+ "\n    Density: " + str(current_density)
+		+ "\n    Variety: " + str(current_variety)
+		+ "\n    Variety reduction: " + str(variety_reduction_factor)
+		+ "\n    Fuel frequency: " + str(current_fuel_factor)
+		+ "\n    Tunnel width: " + str(current_tunnel_width)
+	)
+	var new_safezone_style = CELL_STYLES.TUNNEL  # TODO: Random
+	print("    Style: " + str(new_safezone_style))
+	var new_safezone_height = CELL_STYLES.MIDDLE  # TODO: Random
+	print("    Height: " + str(new_safezone_height))
+	var new_cell = Cell.new(new_safezone_style, new_safezone_height)
+	for number in range(floor(current_density)):
+		var entity_x = 0  # TODO: Random
+		var entity_y = 0  # TODO: Random (using style and witdh)
+	return new_cell
 
 func _clear_cell(cell):
 	for entity in cell.entities:
