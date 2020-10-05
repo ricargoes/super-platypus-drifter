@@ -13,6 +13,7 @@ func _on_Endless_pressed():
 	var _unused = get_tree().change_scene("res://levels/ProceduralLevel.tscn")
 
 func _on_Story_pressed():
+	SPD.do_conversations = $Main/DoConversations.pressed
 	SPD.current_level = 1
 	SPD.artifacts = {
 		1: false,

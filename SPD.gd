@@ -56,6 +56,7 @@ var artifacts = {
 	2: false,
 	3: false
 }
+var do_conversations = true
 
 enum Speakers { Pilot, Council, Dingo, Royal }
 

@@ -23,9 +23,9 @@ __meta__ = {
 
 [node name="Main" type="VBoxContainer" parent="."]
 margin_left = 660.0
-margin_top = 70.0
+margin_top = 38.0
 margin_right = 1260.0
-margin_bottom = 1010.0
+margin_bottom = 1042.0
 rect_min_size = Vector2( 600, 0 )
 custom_constants/separation = 30
 alignment = 1
@@ -59,19 +59,31 @@ rect_min_size = Vector2( 300, 40 )
 size_flags_horizontal = 4
 text = "Story mode"
 
+[node name="DoConversations" type="CheckButton" parent="Main"]
+margin_left = 183.0
+margin_top = 720.0
+margin_right = 417.0
+margin_bottom = 754.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 4
+pressed = true
+text = "Conversations "
+flat = true
+align = 1
+
 [node name="Endless" type="Button" parent="Main"]
 margin_left = 150.0
-margin_top = 720.0
+margin_top = 784.0
 margin_right = 450.0
-margin_bottom = 760.0
+margin_bottom = 824.0
 rect_min_size = Vector2( 300, 40 )
 size_flags_horizontal = 4
 text = "Endless mode"
 
 [node name="HSeparator" type="NinePatchRect" parent="Main"]
-margin_top = 790.0
+margin_top = 854.0
 margin_right = 600.0
-margin_bottom = 870.0
+margin_bottom = 934.0
 rect_min_size = Vector2( 0, 80 )
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 91.1821, 33.2535 )
@@ -123,9 +135,9 @@ wrap_enabled = true
 
 [node name="Quit" type="Button" parent="Main"]
 margin_left = 150.0
-margin_top = 900.0
+margin_top = 964.0
 margin_right = 450.0
-margin_bottom = 940.0
+margin_bottom = 1004.0
 rect_min_size = Vector2( 300, 40 )
 size_flags_horizontal = 4
 text = "Quit"
