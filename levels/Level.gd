@@ -24,9 +24,6 @@ func _process(delta):
 		get_tree().reload_current_scene()
 
 func _update_game_state():
-	# Ship warp
-	if ship.position.y < 0: ship.position.y = ship.position.y + SPD.LEVEL_HEIGHT
-	if ship.position.y > 1080: ship.position.y = ship.position.y - SPD.LEVEL_HEIGHT
 
 	# Ship killed by level limits
 	var ship_camera_displacement = ship.position.x - camera.position.x

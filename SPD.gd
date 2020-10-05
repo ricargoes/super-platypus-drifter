@@ -14,6 +14,7 @@ enum SPACE_ENTITIES {
 	ASTEROID,
 	BLACKHOLE,
 	BOMBPLANET,
+	LIGHTINGPLANET,
 	FUELCAN,
 	DARKENERGY,
 }
@@ -31,16 +32,19 @@ var SPACE_ENTITIES_INFO = {
 	SPACE_ENTITIES.PLANET: SpaceEntityInfo.new(
 		preload("res://planets/Planet.tscn"), 0),
 	SPACE_ENTITIES.ASTEROID: SpaceEntityInfo.new(
-		preload("res://actors/Asteroid.tscn"), 0.3),
+		preload("res://actors/Asteroid.tscn"), 0.5),
 	SPACE_ENTITIES.BLACKHOLE: SpaceEntityInfo.new(
-		preload("res://actors/BlackHole.tscn"), 0.3),
+		preload("res://actors/BlackHole.tscn"), 0.75),
+	SPACE_ENTITIES.LIGHTINGPLANET: SpaceEntityInfo.new(
+		preload("res://planets/LightningPlanet.tscn"), 0.99),
 	SPACE_ENTITIES.BOMBPLANET: SpaceEntityInfo.new(
-		preload("res://planets/BombPlanet.tscn"), 0.9),
+		preload("res://planets/BombPlanet.tscn"), 0.99),
 }
 
+# Space entities info data for planets
 var PLANET_ENTITIES_INFO = {
 	SPACE_ENTITIES.FUELCAN: SpaceEntityInfo.new(
-		preload("res://powerups/FuelCan.tscn"), 0.8),
+		preload("res://powerups/FuelCan.tscn"), 0.75),
 	SPACE_ENTITIES.DARKENERGY: SpaceEntityInfo.new(
 		preload("res://powerups/DarkEnergy.tscn"), 0.95),
 }

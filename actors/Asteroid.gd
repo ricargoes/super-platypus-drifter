@@ -6,7 +6,12 @@ var selected_asteroid = null
 
 func _ready():
 	randomize()
-	var asteroid_variants = get_children()
+	var asteroid_variants = [
+		get_node("CollisionShape2D1"),
+		get_node("CollisionShape2D2"),
+		get_node("CollisionShape2D3"),
+		get_node("CollisionShape2D4"),
+	]
 	var _index = randi() % asteroid_variants.size()
 	for i in range(asteroid_variants.size()):
 		if i == _index:
