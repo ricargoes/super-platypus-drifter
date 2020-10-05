@@ -65,14 +65,14 @@ var CONVERSATION_SEQUENCES = {
 		{"speaker": Speakers.Royal, "text": "Ground Control to Major Bill Duck, we have found an elder artifact. You must find two more for the truth to be revealed..."},
 		{"speaker": Speakers.Pilot, "text": "Yes, ok, but... why is my fuel tank almost empty?"},
 		{"speaker": Speakers.Council, "text": "Budget cuts, of course."},
-		{"speaker": Speakers.Pilot, "text": "But His Platypuness wears a gold monocle!"},
+		{"speaker": Speakers.Pilot, "text": "But His Platypusness wears a gold monocle!"},
 		{"speaker": Speakers.Royal, "text": "...", "silent": true},
 		{"speaker": Speakers.Council, "text": "...", "silent": true},
 		{"speaker": Speakers.Pilot, "text": "...", "silent": true},
 		{"speaker": Speakers.Council, "text": "Ahem, we'll keep in touch."},
 	],
 	"level1_end1": [
-		{"speaker": Speakers.Pilot, "text": "I'll have to rush the next jump!"},
+		{"speaker": Speakers.Pilot, "text": "I'll have to rush to the next jump!"},
 	],
 	"level1_end2": [
 		{"speaker": Speakers.Pilot, "text": "I'll take that dark matter unit to get out of this galactic sector."},
@@ -80,7 +80,7 @@ var CONVERSATION_SEQUENCES = {
 	
 	"lore1": [
 		{"speaker": Speakers.Royal, "text": "Look there! On that planet!"},
-		{"speaker": Speakers.Council, "text": "THE ARTIFACT"},
+		{"speaker": Speakers.Council, "text": "THE ARTIFACT!"},
 		{"speaker": Speakers.Pilot, "text": "Gasp... It won't be easy to get in there..."},
 		{"speaker": Speakers.Royal, "text": "Get into its orbit. That's an order!"},
 		
@@ -96,9 +96,9 @@ var CONVERSATION_SEQUENCES = {
 	],
 	
 	"level3_start": [
-		{"speaker": Speakers.Dingo, "text": "Don't think about gettin' your ass in there, mate, or y'all cark it!"},
+		{"speaker": Speakers.Dingo, "text": "Don't think about gettin' your ass in there, mate, or you'll cark it!"},
 		{"speaker": Speakers.Pilot, "text": "And why should I trust you? Our two species are at war."},
-		{"speaker": Speakers.Dingo, "text": "I lost me mates there, boah, if ya cross that line... y'all never come back."},
+		{"speaker": Speakers.Dingo, "text": "I lost me mates there, boah, if ya cross that line... you'll  never come back."},
 		{"speaker": Speakers.Pilot, "text": "Ok, I get it. You want to prevent me from getting the artifacts for my people."},
 		{"speaker": Speakers.Dingo, "text": "Those artifacts don't exist, mate. Your rulers lie, and mine too. We're just dogs to'em..."},
 		{"speaker": Speakers.Pilot, "text": "Well, technically you are a dingo..."},
@@ -117,20 +117,20 @@ var CONVERSATION_SEQUENCES = {
 	
 	"level3_medium":[
 		{"speaker": Speakers.Dingo, "text": "This' the point where I lost all me mates.... Don't be a fool!"},
-		{"speaker": Speakers.Pilot, "text": "But... but His Platypuness told me..."},
+		{"speaker": Speakers.Pilot, "text": "But... but His Platypusness told me..."},
 		{"speaker": Speakers.Royal, "text": "Carry on! I can almost smell the answers to all our questions."},
 		{"speaker": Speakers.Pilot, "text": "...", "silent": true},
 	],
 	
 	"lore3": [
-		{"speaker": Speakers.Council, "text": "Our scientist think that lightning planet has another sacred artifact."},
+		{"speaker": Speakers.Council, "text": "Our scientist think that that lightning planet has another sacred artifact."},
 		{"speaker": Speakers.Royal, "text": "We need it! I need it!. Go, my minion! Go get it!"},
 		{"speaker": Speakers.Pilot, "text": "...", "silent": true},
 		{"speaker": Speakers.Dingo, "text": "They're gonna kill ya, mate!"},
 	],
 	
 	"lore4": [
-		{"speaker": Speakers.Pilot, "text": "Phew! I did it! Another powerfull artifact for the platypuskind!!"},
+		{"speaker": Speakers.Pilot, "text": "Phew! I did it! Another powerfull artifact for platypuskind!!"},
 	],
 	
 	"level3_end": [
