@@ -17,7 +17,8 @@ _global_script_class_icons={
 
 config/name="Super-platypus-drifter"
 run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
+boot_splash/image="res://interface/Title_1.png"
+config/icon="res://interface/characters/Billy Duck1.png"
 
 [autoload]
 
