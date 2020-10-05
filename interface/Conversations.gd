@@ -10,6 +10,13 @@ onready var textures = {
 	SPD.Speakers.Royal: preload("res://interface/characters/platypuness_anim.tres"),
 }
 
+onready var textures_still = {
+	SPD.Speakers.Pilot: preload("res://interface/characters/Billy Duck1.png"),
+	SPD.Speakers.Council: preload("res://interface/characters/Council Member1.png"),
+	SPD.Speakers.Dingo: preload("res://interface/characters/Evil Dingo Django1.png"),
+	SPD.Speakers.Royal: preload("res://interface/characters/Your Platypuness1.png"),
+}
+
 onready var audios = {
 	SPD.Speakers.Pilot: preload("res://interface/characters/pilot.wav"),
 	SPD.Speakers.Council: preload("res://interface/characters/council.wav"),
@@ -30,10 +37,14 @@ func begin_conversation(sequence_name):
 	set_process_input(true)
 
 func refresh():
-	$Margins/BG/MarginContainer/HBoxContainer/TextureRect.texture = textures[sequence[counter]["speaker"]]
+	$Speak.stop()
 	$Margins/BG/MarginContainer/HBoxContainer/TextEdit.text = sequence[counter]["text"]
-	$Speak.stream = audios[sequence[counter]["speaker"]]
-	$Speak.play()
+	if "silent" in sequence[counter] and sequence[counter]["silent"]:
+		$Margins/BG/MarginContainer/HBoxContainer/TextureRect.texture = textures_still[sequence[counter]["speaker"]]
+	else:
+		$Margins/BG/MarginContainer/HBoxContainer/TextureRect.texture = textures[sequence[counter]["speaker"]]
+		$Speak.stream = audios[sequence[counter]["speaker"]]
+		$Speak.play()
 	show()
 
 func next():
@@ -44,5 +55,6 @@ func next():
 		refresh()
 
 func end():
+	$Speak.stop()
 	hide()
 	get_tree().paused = false

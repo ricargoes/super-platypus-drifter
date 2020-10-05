@@ -57,9 +57,9 @@ var CONVERSATION_SEQUENCES = {
 		{"speaker": Speakers.Pilot, "text": "Si vale, pero ¿por qué tengo el depósito de combustible casi vacío?"},
 		{"speaker": Speakers.Council, "text": "Recortes presupuestarios"},
 		{"speaker": Speakers.Pilot, "text": "Pero si su majestad lleva un monóculo de oro!!!"},
-		{"speaker": Speakers.Royal, "text": "..."},
-		{"speaker": Speakers.Council, "text": "..."},
-		{"speaker": Speakers.Pilot, "text": "..."},
+		{"speaker": Speakers.Royal, "text": "...", "silent": true},
+		{"speaker": Speakers.Council, "text": "...", "silent": true},
+		{"speaker": Speakers.Pilot, "text": "...", "silent": true},
 		{"speaker": Speakers.Council, "text": "Ajem, seguiremos en contacto"},
 	],
 	"level1_end1": [
