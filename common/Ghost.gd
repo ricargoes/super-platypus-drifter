@@ -26,7 +26,7 @@ func _physics_process(_delta):
 		top_ghost.set_rotation(sprite.get_rotation())
 		top_ghost.set_global_position(Vector2(
 			sprite.global_position.x, 
-			sprite.global_position.y - SPD.LEVEL_HEIGHT +200
+			sprite.global_position.y - SPD.LEVEL_HEIGHT
 		))
 		if sprite is Sprite:
 			if bottom_ghost.texture != sprite.texture:
@@ -37,7 +37,7 @@ func _physics_process(_delta):
 		bottom_ghost.set_rotation(sprite.get_rotation())
 		bottom_ghost.set_global_position(Vector2(
 			sprite.global_position.x, 
-			sprite.global_position.y + SPD.LEVEL_HEIGHT -200
+			sprite.global_position.y + SPD.LEVEL_HEIGHT
 		))
 		if sprite is AnimatedSprite:
 			top_ghost.frame = sprite.frame
