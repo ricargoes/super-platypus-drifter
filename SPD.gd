@@ -49,6 +49,9 @@ var PLANET_ENTITIES_INFO = {
 		preload("res://powerups/DarkEnergy.tscn"), 0.95),
 }
 
+var current_level = -1
+var journey_length = -1
+
 enum Speakers { Pilot, Council, Dingo, Royal }
 
 var CONVERSATION_SEQUENCES = {

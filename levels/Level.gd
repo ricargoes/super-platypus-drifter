@@ -1,9 +1,9 @@
 extends Node2D
 
 export var scroll_speed = 100.0
-onready var camera_start = get_node("CameraStart")
+onready var camera_start = $CameraStart
 onready var camera = $Camera
-onready var ship_start = get_node("ShipStart")
+onready var ship_start = $ShipStart
 var ship = null
 
 signal level_ended
@@ -23,7 +23,8 @@ func _physics_process(delta):
 	if ship:
 		_update_game_state()
 	else:
-		get_tree().reload_current_scene()
+		SPD.journey_length = int(camera.position.x/100)
+		game_over()
 
 func _update_game_state():
 
@@ -37,3 +38,6 @@ func _update_game_state():
 
 func _on_Endline_body_entered(body):
 	emit_signal("level_ended")
+
+func game_over():
+	var _unused = get_tree().change_scene("res://levels/GameOver.tscn")

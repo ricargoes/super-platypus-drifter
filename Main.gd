@@ -2,12 +2,15 @@ extends Control
 
 
 func _on_Tutorial_pressed():
+	SPD.current_level = 0
 	pass
 
 func _on_Endless_pressed():
+	SPD.current_level = -1
 	var _unused = get_tree().change_scene("res://levels/ProceduralLevel.tscn")
 
 func _on_Story_pressed():
+	SPD.current_level = 1
 	var _unused = get_tree().change_scene("res://levels/Supervisor.tscn")
 
 func _on_Quit_pressed():
