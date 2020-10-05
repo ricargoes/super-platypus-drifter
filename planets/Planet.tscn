@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://planets/planet1.png" type="Texture" id=1]
 [ext_resource path="res://planets/StablePlanet.gd" type="Script" id=2]
 [ext_resource path="res://planets/orbital_ring.png" type="Texture" id=3]
+[ext_resource path="res://common/Ghost.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 109.5
@@ -31,4 +32,11 @@ shape = SubResource( 2 )
 [node name="OrbitalRing" type="Sprite" parent="."]
 self_modulate = Color( 1, 1, 1, 0.309804 )
 texture = ExtResource( 3 )
+
+[node name="Ghost" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="Ghost2" type="Node" parent="."]
+script = ExtResource( 4 )
+sprite_name = "OrbitalRing"
 [connection signal="body_exited" from="Orbit" to="." method="_on_Orbit_body_exited"]

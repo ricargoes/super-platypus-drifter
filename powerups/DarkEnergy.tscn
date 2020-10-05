@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://powerups/Fuel Boost/Fuel Boost5.png" type="Texture" id=1]
 [ext_resource path="res://powerups/Fuel Boost/Fuel Boost2.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://powerups/Fuel Boost/Fuel Boost4.png" type="Texture" id=5]
 [ext_resource path="res://powerups/Fuel Boost/Fuel Boost3.png" type="Texture" id=6]
 [ext_resource path="res://powerups/DarkEnergy.gd" type="Script" id=7]
+[ext_resource path="res://common/Ghost.gd" type="Script" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -29,4 +30,8 @@ frames = SubResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -1 )
 shape = SubResource( 2 )
+
+[node name="Ghost" type="Node" parent="."]
+script = ExtResource( 8 )
+sprite_name = "AnimatedSprite"
 [connection signal="body_entered" from="." to="." method="_on_DarkEnergy_body_entered"]

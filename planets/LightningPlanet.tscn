@@ -37,3 +37,6 @@ shape = SubResource( 1 )
 frames = SubResource( 2 )
 frame = 7
 playing = true
+
+[node name="Ghost" parent="." index="5"]
+sprite_name = "LightingAnim"
