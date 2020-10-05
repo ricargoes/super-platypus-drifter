@@ -1,6 +1,9 @@
 extends Control
 
 
+func _ready():
+	$Main/Tutorial.grab_focus()
+
 func _on_Tutorial_pressed():
 	SPD.current_level = 0
 	var _unused = get_tree().change_scene("res://levels/Tutorial.tscn")

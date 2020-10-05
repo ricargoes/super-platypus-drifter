@@ -3,6 +3,7 @@ extends CenterContainer
 var good_win = true
 
 func _ready():
+	$VBoxContainer/HBoxContainer2/MainMenu.grab_focus()
 	for level in SPD.artifacts.keys():
 		if not SPD.artifacts[level]:
 			good_win = false

@@ -1,6 +1,7 @@
 extends CenterContainer
 
 func _ready():
+	$VBoxContainer/Retry.grab_focus()
 	if SPD.current_level == -1:
 		$VBoxContainer/HowFar.text = "Your journey was " + str(SPD.journey_length) + " light-years long"
 	else:

@@ -39,9 +39,9 @@ text = "Game Over"
 align = 1
 
 [node name="HowFar" type="Label" parent="VBoxContainer"]
-margin_top = 122.0
+margin_top = 123.0
 margin_right = 438.0
-margin_bottom = 172.0
+margin_bottom = 173.0
 rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = SubResource( 2 )
 text = "Your journey was 0 light-years long"
@@ -56,18 +56,18 @@ expand = true
 stretch_mode = 6
 
 [node name="Retry" type="Button" parent="VBoxContainer"]
-margin_left = 93.0
+margin_left = 94.0
 margin_top = 453.0
-margin_right = 343.0
+margin_right = 344.0
 margin_bottom = 487.0
 rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 4
 text = "Retry"
 
 [node name="MainMenu" type="Button" parent="VBoxContainer"]
-margin_left = 93.0
+margin_left = 94.0
 margin_top = 527.0
-margin_right = 343.0
+margin_right = 344.0
 margin_bottom = 561.0
 rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 4
