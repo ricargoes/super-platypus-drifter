@@ -3,7 +3,7 @@ extends Control
 
 func _on_Tutorial_pressed():
 	SPD.current_level = 0
-	pass
+	var _unused = get_tree().change_scene("res://levels/Tutorial.tscn")
 
 func _on_Endless_pressed():
 	SPD.current_level = -1

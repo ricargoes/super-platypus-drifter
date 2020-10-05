@@ -11,7 +11,7 @@ func _on_Retry_pressed():
 	if SPD.current_level == -1:
 		var _unused = get_tree().change_scene("res://levels/ProceduralLevel.tscn")
 	elif SPD.current_level == 0:
-		var _unused = get_tree().change_scene("res://Main.tscn")
+		var _unused = get_tree().change_scene("res://levels/Tutorial.tscn")
 	elif SPD.current_level > 0:
 		var _unused = get_tree().change_scene("res://levels/Supervisor.tscn")
 		
