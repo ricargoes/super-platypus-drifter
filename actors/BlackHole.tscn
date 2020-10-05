@@ -40,7 +40,7 @@ collision_layer = 2
 scale = Vector2( 3, 3 )
 shape = SubResource( 3 )
 
-[node name="Ghost" type="Node" parent="."]
+[node name="AnimatedSpriteGhost" type="Node" parent="."]
 script = ExtResource( 9 )
 sprite_name = "AnimatedSprite"
 [connection signal="body_entered" from="." to="." method="_on_BlackHole_body_entered"]

@@ -130,6 +130,10 @@ one_shot = true
 [node name="Wrapper" type="Node" parent="."]
 script = ExtResource( 15 )
 
-[node name="Ghost" type="Node" parent="."]
+[node name="SpriteGhost" type="Node" parent="."]
 script = ExtResource( 16 )
+
+[node name="BoosterAnimGhost" type="Node" parent="."]
+script = ExtResource( 16 )
+sprite_name = "BoosterAnim"
 [connection signal="timeout" from="Bubble/Timer" to="." method="_on_Timer_timeout"]

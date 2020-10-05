@@ -88,8 +88,12 @@ visible = false
 frames = SubResource( 5 )
 speed_scale = 2.0
 
-[node name="Ghost" type="Node" parent="CollisionShape2D1"]
+[node name="SpriteGhost" type="Node" parent="CollisionShape2D1"]
 script = ExtResource( 19 )
+
+[node name="AnimatedSpriteGhost" type="Node" parent="CollisionShape2D1"]
+script = ExtResource( 19 )
+sprite_name = "AnimatedSpriteGhost"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
@@ -102,8 +106,12 @@ visible = false
 frames = SubResource( 6 )
 speed_scale = 2.0
 
-[node name="Ghost" type="Node" parent="CollisionShape2D2"]
+[node name="SpriteGhost" type="Node" parent="CollisionShape2D2"]
 script = ExtResource( 19 )
+
+[node name="AnimatedSpriteGhost" type="Node" parent="CollisionShape2D2"]
+script = ExtResource( 19 )
+sprite_name = "AnimatedSpriteGhost"
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
 
@@ -116,8 +124,12 @@ visible = false
 frames = SubResource( 7 )
 speed_scale = 2.0
 
-[node name="Ghost" type="Node" parent="CollisionShape2D3"]
+[node name="SpriteGhost" type="Node" parent="CollisionShape2D3"]
 script = ExtResource( 19 )
+
+[node name="AnimatedSpriteGhost" type="Node" parent="CollisionShape2D3"]
+script = ExtResource( 19 )
+sprite_name = "AnimatedSpriteGhost"
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
 shape = SubResource( 4 )
 
@@ -130,8 +142,12 @@ visible = false
 frames = SubResource( 8 )
 speed_scale = 2.0
 
-[node name="Ghost" type="Node" parent="CollisionShape2D4"]
+[node name="SpriteGhost" type="Node" parent="CollisionShape2D4"]
 script = ExtResource( 19 )
+
+[node name="AnimatedSpriteGhost" type="Node" parent="CollisionShape2D4"]
+script = ExtResource( 19 )
+sprite_name = "AnimatedSpriteGhost"
 
 [node name="Wrapper" type="Node" parent="."]
 script = ExtResource( 18 )

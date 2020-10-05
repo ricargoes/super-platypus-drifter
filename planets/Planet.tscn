@@ -33,10 +33,10 @@ shape = SubResource( 2 )
 self_modulate = Color( 1, 1, 1, 0.309804 )
 texture = ExtResource( 3 )
 
-[node name="Ghost" type="Node" parent="."]
+[node name="SpriteGhost" type="Node" parent="."]
 script = ExtResource( 4 )
 
-[node name="Ghost2" type="Node" parent="."]
+[node name="OrbitalRingGhost" type="Node" parent="."]
 script = ExtResource( 4 )
 sprite_name = "OrbitalRing"
 [connection signal="body_exited" from="Orbit" to="." method="_on_Orbit_body_exited"]
