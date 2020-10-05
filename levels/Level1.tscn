@@ -1,40 +1,142 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://powerups/FuelCan.tscn" type="PackedScene" id=1]
-[ext_resource path="res://levels/Level.gd" type="Script" id=2]
-[ext_resource path="res://planets/Planet.tscn" type="PackedScene" id=3]
-[ext_resource path="res://actors/Asteroid.tscn" type="PackedScene" id=4]
-[ext_resource path="res://actors/BlackHole.tscn" type="PackedScene" id=5]
-[ext_resource path="res://levels/Background.tscn" type="PackedScene" id=6]
+[ext_resource path="res://planets/Planet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://actors/Asteroid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://powerups/FuelCan.tscn" type="PackedScene" id=3]
+[ext_resource path="res://powerups/DarkEnergy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://interface/LevelInterface.tscn" type="PackedScene" id=5]
+[ext_resource path="res://actors/ConversationActivator.tscn" type="PackedScene" id=6]
+[ext_resource path="res://levels/background1.png" type="Texture" id=7]
 
-[node name="Level1" type="Node2D"]
-script = ExtResource( 2 )
+[node name="Level1" instance=ExtResource( 5 )]
+scroll_speed = 50.0
 
-[node name="Camera" type="Camera2D" parent="."]
-current = true
+[node name="Backgroud" parent="." index="1"]
+texture = ExtResource( 7 )
 
-[node name="Backgroud" parent="." instance=ExtResource( 6 )]
+[node name="ConversationActivator" parent="." index="7" instance=ExtResource( 6 )]
+position = Vector2( 280.316, 541.945 )
+sequence_name = "level1_start"
 
-[node name="CameraStart" type="Position2D" parent="."]
-position = Vector2( 256, 540 )
+[node name="Planet" parent="." index="8" instance=ExtResource( 1 )]
+position = Vector2( 485.881, 536.605 )
 
-[node name="ShipStart" type="Position2D" parent="."]
-position = Vector2( 256, 540 )
+[node name="Planet2" parent="." index="9" instance=ExtResource( 1 )]
+position = Vector2( 1249.41, 544.614 )
 
-[node name="Planets" type="Node2D" parent="."]
+[node name="Planet3" parent="." index="10" instance=ExtResource( 1 )]
+position = Vector2( 1962.21, 258.959 )
 
-[node name="Planet1" parent="Planets" instance=ExtResource( 3 )]
-position = Vector2( 664.61, 548.794 )
+[node name="Planet4" parent="." index="11" instance=ExtResource( 1 )]
+position = Vector2( 2533.52, 707.465 )
 
-[node name="FuelCans" type="Node2D" parent="."]
+[node name="Planet5" parent="." index="12" instance=ExtResource( 1 )]
+position = Vector2( 3219.63, 371.085 )
 
-[node name="FuelCan" parent="FuelCans" instance=ExtResource( 1 )]
-position = Vector2( 717.505, 395.263 )
+[node name="Planet6" parent="." index="13" instance=ExtResource( 1 )]
+position = Vector2( 3596.06, 768.868 )
 
-[node name="Obstacles" type="Node2D" parent="."]
+[node name="Planet7" parent="." index="14" instance=ExtResource( 1 )]
+position = Vector2( 4124.65, 344.389 )
 
-[node name="Asteroid" parent="Obstacles" instance=ExtResource( 4 )]
-position = Vector2( 406.374, 487.332 )
+[node name="Planet8" parent="." index="15" instance=ExtResource( 1 )]
+position = Vector2( 5101.75, 315.022 )
 
-[node name="BlackHole" parent="Obstacles" instance=ExtResource( 5 )]
-position = Vector2( 992.956, 728.671 )
+[node name="Planet9" parent="." index="16" instance=ExtResource( 1 )]
+position = Vector2( 5104.42, 913.03 )
+
+[node name="Asteroid" parent="." index="17" instance=ExtResource( 2 )]
+position = Vector2( 878.324, 355.067 )
+random_velocity = false
+velocity = Vector2( 0, 0 )
+
+[node name="Asteroid2" parent="." index="18" instance=ExtResource( 2 )]
+position = Vector2( 1689.91, 331.04 )
+random_velocity = false
+velocity = Vector2( 0, 0 )
+
+[node name="Asteroid3" parent="." index="19" instance=ExtResource( 2 )]
+position = Vector2( 1708.59, 651.401 )
+random_velocity = false
+velocity = Vector2( 0, 0 )
+
+[node name="Asteroid4" parent="." index="20" instance=ExtResource( 2 )]
+position = Vector2( 2405.38, 397.782 )
+random_velocity = false
+velocity = Vector2( 0, 0 )
+
+[node name="Asteroid5" parent="." index="21" instance=ExtResource( 2 )]
+position = Vector2( 2237.19, 440.497 )
+random_velocity = false
+velocity = Vector2( 0, 0 )
+
+[node name="Asteroid6" parent="." index="22" instance=ExtResource( 2 )]
+position = Vector2( 2231.85, 600.678 )
+random_velocity = false
+velocity = Vector2( 0, 0 )
+
+[node name="Asteroid7" parent="." index="23" instance=ExtResource( 2 )]
+position = Vector2( 2875.24, 774.207 )
+random_velocity = false
+velocity = Vector2( 0, 0 )
+
+[node name="Asteroid8" parent="." index="24" instance=ExtResource( 2 )]
+position = Vector2( 3006.06, 368.416 )
+random_velocity = false
+velocity = Vector2( 0, 0 )
+
+[node name="Asteroid9" parent="." index="25" instance=ExtResource( 2 )]
+position = Vector2( 3275.7, 670.089 )
+random_velocity = false
+velocity = Vector2( 0, 0 )
+
+[node name="Asteroid10" parent="." index="26" instance=ExtResource( 2 )]
+position = Vector2( 4135.33, 496.56 )
+random_velocity = false
+velocity = Vector2( 0, 0 )
+
+[node name="Asteroid11" parent="." index="27" instance=ExtResource( 2 )]
+position = Vector2( 5203.2, 622.035 )
+random_velocity = false
+velocity = Vector2( 0, 0 )
+
+[node name="Asteroid12" parent="." index="28" instance=ExtResource( 2 )]
+position = Vector2( 5398.09, 472.533 )
+random_velocity = false
+velocity = Vector2( 0, 0 )
+
+[node name="Asteroid13" parent="." index="29" instance=ExtResource( 2 )]
+position = Vector2( 5395.42, 742.171 )
+random_velocity = false
+velocity = Vector2( 0, 0 )
+
+[node name="FuelCan" parent="." index="30" instance=ExtResource( 3 )]
+position = Vector2( 894.342, 541.945 )
+
+[node name="FuelCan2" parent="." index="31" instance=ExtResource( 3 )]
+position = Vector2( 1705.92, 416.47 )
+
+[node name="FuelCan3" parent="." index="32" instance=ExtResource( 3 )]
+position = Vector2( 2664.34, 782.216 )
+
+[node name="FuelCan4" parent="." index="33" instance=ExtResource( 3 )]
+position = Vector2( 3582.71, 368.416 )
+
+[node name="FuelCan5" parent="." index="34" instance=ExtResource( 3 )]
+position = Vector2( 4242.12, 443.167 )
+
+[node name="FuelCan6" parent="." index="35" instance=ExtResource( 3 )]
+position = Vector2( 5093.75, 619.365 )
+
+[node name="ConversationActivator2" parent="." index="36" instance=ExtResource( 6 )]
+position = Vector2( 4380.94, 627.374 )
+scale = Vector2( 1, 20 )
+sequence_name = "level1_end1"
+
+[node name="ConversationActivator3" parent="." index="37" instance=ExtResource( 6 )]
+position = Vector2( 5312.66, 627.374 )
+scale = Vector2( 1, 20 )
+sequence_name = "level1_end2"
+
+[node name="DarkEnergy" parent="." index="38" instance=ExtResource( 4 )]
+position = Vector2( 5395.42, 614.026 )

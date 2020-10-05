@@ -52,8 +52,20 @@ var PLANET_ENTITIES_INFO = {
 enum Speakers { Pilot, Council, Dingo, Royal }
 
 var CONVERSATION_SEQUENCES = {
-	"start": [
-		{"speaker": Speakers.Pilot, "text": "tutupa"},
-		{"speaker": Speakers.Royal, "text": "chaca"},
-	]
+	"level1_start": [
+		{"speaker": Speakers.Royal, "text": "Hemos encontrado un artefacto ancestral, debes de encontrar dos más para que la verdad sea revelada..."},
+		{"speaker": Speakers.Pilot, "text": "Si vale, pero ¿por qué tengo el depósito de combustible casi vacío?"},
+		{"speaker": Speakers.Council, "text": "Recortes presupuestarios"},
+		{"speaker": Speakers.Pilot, "text": "Pero si su majestad lleva un monóculo de oro!!!"},
+		{"speaker": Speakers.Royal, "text": "..."},
+		{"speaker": Speakers.Council, "text": "..."},
+		{"speaker": Speakers.Pilot, "text": "..."},
+		{"speaker": Speakers.Council, "text": "Ajem, seguiremos en contacto"},
+	],
+	"level1_end1": [
+		{"speaker": Speakers.Pilot, "text": "Tendré que apurar el próximo salto!!!"},
+	],
+	"level1_end2": [
+		{"speaker": Speakers.Pilot, "text": "Cogeré esa unidad de materia oscura para salir de este sector galáctico."},
+	],
 }
