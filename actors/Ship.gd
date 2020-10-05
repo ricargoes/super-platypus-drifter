@@ -98,6 +98,7 @@ func use_infifuel(time):
 func show_bubble(text):
 	$Bubble/Text.text = text
 	$Bubble.show()
+	$Bubble/Timer.start()
 
 func _on_Timer_timeout():
 	$Bubble.hide()
