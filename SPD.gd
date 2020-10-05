@@ -68,4 +68,15 @@ var CONVERSATION_SEQUENCES = {
 	"level1_end2": [
 		{"speaker": Speakers.Pilot, "text": "Cogeré esa unidad de materia oscura para salir de este sector galáctico."},
 	],
+	"lore1": [
+		{"speaker": Speakers.Royal, "text": "Ahí!!!, en ese planeta!!!"},
+		{"speaker": Speakers.Council, "text": "EL ARTEFACTO"},
+		{"speaker": Speakers.Pilot, "text": "No va a ser fácil entrar ahí..."},
+		{"speaker": Speakers.Royal, "text": "Te ordeno que entres en la órbita!!!"},
+		
+	],
+	"lore2": [
+		{"speaker": Speakers.Pilot, "text": "Lo tengo!!!"},
+		
+	],
 }
