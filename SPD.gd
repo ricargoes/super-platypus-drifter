@@ -141,6 +141,7 @@ var CONVERSATION_SEQUENCES = {
 }
 
 func _ready():
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	set_process_input(true)
 
 func _input(event):
