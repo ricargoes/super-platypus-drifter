@@ -51,6 +51,11 @@ export(int) var tunnel_widht_change_minimun = 150
 # Disable the safe zone randomly
 export(bool) var goodluck_enabled = false
 
+# Level speed
+export(float) var initial_level_speed = 70.0
+export(int) var level_speed_change_distance = 1960
+export(float) var level_speed_change_ammount = 15
+
 # Locals
 
 onready var rnd = RandomNumberGenerator.new()
@@ -61,6 +66,7 @@ var camera_density = initial_density
 var camera_variety = initial_variety
 var camera_tunnel_width = initial_tunnel_widht
 var camera_cell = 0
+var level_speed = initial_level_speed
 
 
 # Update script locals
@@ -251,6 +257,12 @@ func _shift_cells(forward=true):
 
 func _physics_process(_delta):
 	_update_locals()
+
+	# Speed update
+	root.scroll_speed = initial_level_speed + abs(
+		int(camera.position.x / level_speed_change_distance)
+		* level_speed_change_ammount
+	)
 
 	# Cell shifting and generation
 	while camera_cell > last_cell:
