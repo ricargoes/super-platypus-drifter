@@ -50,23 +50,23 @@ rect_min_size = Vector2( 300, 40 )
 size_flags_horizontal = 4
 text = "Tutorial"
 
-[node name="Endless" type="Button" parent="Main"]
+[node name="Story" type="Button" parent="Main"]
 margin_left = 150.0
 margin_top = 650.0
 margin_right = 450.0
 margin_bottom = 690.0
 rect_min_size = Vector2( 300, 40 )
 size_flags_horizontal = 4
-text = "Endless mode"
+text = "Story mode"
 
-[node name="Story" type="Button" parent="Main"]
+[node name="Endless" type="Button" parent="Main"]
 margin_left = 150.0
 margin_top = 720.0
 margin_right = 450.0
 margin_bottom = 760.0
 rect_min_size = Vector2( 300, 40 )
 size_flags_horizontal = 4
-text = "Story mode"
+text = "Endless mode"
 
 [node name="HSeparator" type="NinePatchRect" parent="Main"]
 margin_top = 790.0
@@ -132,12 +132,12 @@ text = "Quit"
 [connection signal="mouse_entered" from="Main/Tutorial" to="." method="_on_Tutorial_mouse_entered"]
 [connection signal="mouse_exited" from="Main/Tutorial" to="." method="default_explanation"]
 [connection signal="pressed" from="Main/Tutorial" to="." method="_on_Tutorial_pressed"]
-[connection signal="mouse_entered" from="Main/Endless" to="." method="_on_Endless_mouse_entered"]
-[connection signal="mouse_exited" from="Main/Endless" to="." method="default_explanation"]
-[connection signal="pressed" from="Main/Endless" to="." method="_on_Endless_pressed"]
 [connection signal="mouse_entered" from="Main/Story" to="." method="_on_Story_mouse_entered"]
 [connection signal="mouse_exited" from="Main/Story" to="." method="default_explanation"]
 [connection signal="pressed" from="Main/Story" to="." method="_on_Story_pressed"]
+[connection signal="mouse_entered" from="Main/Endless" to="." method="_on_Endless_mouse_entered"]
+[connection signal="mouse_exited" from="Main/Endless" to="." method="default_explanation"]
+[connection signal="pressed" from="Main/Endless" to="." method="_on_Endless_pressed"]
 [connection signal="mouse_entered" from="Main/Quit" to="." method="_on_Quit_mouse_entered"]
 [connection signal="mouse_exited" from="Main/Quit" to="." method="default_explanation"]
 [connection signal="pressed" from="Main/Quit" to="." method="_on_Quit_pressed"]
