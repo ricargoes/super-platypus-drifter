@@ -19,6 +19,6 @@ func load_level():
 	current_levels_scene.connect("level_ended", self, "next_level")
 
 func next_level():
-	SPD.level += 1
+	SPD.current_level += 1
 	load_level()
 
