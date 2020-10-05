@@ -10,8 +10,8 @@ func _ready():
 	sprite = get_node('../' + sprite_name)
 	if sprite is Sprite or sprite is AnimatedSprite:
 		top_ghost = sprite.duplicate()
-		sprite.add_child(top_ghost)
 		bottom_ghost = sprite.duplicate()
+		sprite.add_child(top_ghost)
 		sprite.add_child(bottom_ghost)
 	set_physics_process(true)
 
