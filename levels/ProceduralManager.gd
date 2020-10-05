@@ -1,23 +1,25 @@
 extends Node
 
 
-# This script spawns and destroys space elements as the player moves to the
-# right. It expects a "Camera" sibling to determine the current level position.
-# The scripts considers the level as a series of separated "cells" with the
+# This script spawns and destroys space elements as the player moves along the
+# level. It expects a "Camera" sibling to determine the current level position.
+# The script considers the level as a series of separated "cells" with the
 # width of a game screen. To handle spawning and clearing, an array of 5 cells
-# is kept. Each cell has a a list to hold the entities spawned inside it and
-# other fields to determine the spawning algorithm. Spawning is done avoiding
-# a clear strip randomly generated using an function.
+# centered in the current cell is kept. Each cell has a list to hold the
+# entities spawned inside it and a field to determine the spawning algorithm.
+# This spawning algorithm is used to avoid a safe zone randomly generated using
+# a function.
 
 
-# Form followed by the cleared area in the screen (space ensured empty)
+var cells = []
+
+# Funtions for the safe zone
 enum TUNNEL_GENERATORS {
 	MIDDLE = 0,   # A strip in the middle of the screen
 	SIN = 1,      # A sine wave
 	SAW = 2,      # A saw (back an forth diagonally from top to bottom)
 	GOODLUCK = 3, # Disable the ensured space
 }
-
 
 class Cell:
 	var tunnel_generator = 0
@@ -27,30 +29,30 @@ class Cell:
 	):
 		self.tunnel_generator = initial_tunnel_generator
 
-
-# Store the two previous cells, the current cell and the next two cells
-var cells = []
-
-
 # Editor configuration with defaul values
+
+# Ammount of objects in each game screen
 export(float) var initial_density = 3
 export(int) var density_change_distance = 1960
 export(float) var density_change_ammount = 1
 
+# Factor to increase the rarity of entities found
 export(float) var initial_variety = 1
 export(int) var variety_change_distance = 1960
 export(float) var variety_change_ammount = 0.5
 export(float) var variety_reduction_factor = 1
 
+# How wide is the safe zone
 export(float) var initial_tunnel_widht = 450
 export(int) var tunnel_widht_change_distance = 1960
 export(float) var tunnel_widht_change_ammount = 10
 export(int) var tunnel_widht_change_minimun = 150
 
+# Disable the safe zone randomly
 export(bool) var goodluck_enabled = false
 
-
 # Locals
+
 onready var rnd = RandomNumberGenerator.new()
 onready var root = $".."
 onready var camera = $"../Camera"
@@ -80,6 +82,7 @@ func _update_locals():
 		max(camera_tunnel_width, tunnel_widht_change_minimun)
 
 
+# Calculate the Y coordinate for a new entity creating the safe zone
 func _get_valid_y_coord(cell_info, cell_x):
 
 	if cell_info.tunnel_generator == TUNNEL_GENERATORS.MIDDLE:
@@ -120,6 +123,7 @@ func _get_valid_y_coord(cell_info, cell_x):
 		return rnd.randi_range(0, SPD.LEVEL_HEIGHT)
 
 
+# Choose a random entity to spawn having variety and rarity into account
 func _select_random_entity():
 	var adjusted_variety = {}
 	for entity_info_key in SPD.SPACE_ENTITIES_INFO.keys():
@@ -135,7 +139,8 @@ func _select_random_entity():
 	return pool[rnd.randi_range(0, len(pool)-1)]
 
 
-func _init_random_entity(cell_info, cell_number):
+# Prepare new entities for a cell
+func _init_random_entities(cell_info, cell_number):
 	var created_entities = []
 
 	var selected_entity = _select_random_entity()
@@ -148,6 +153,7 @@ func _init_random_entity(cell_info, cell_number):
 		_get_valid_y_coord(cell_info, entity_cell_x)
 	))
 
+	# Generates fuel around planets
 	if selected_entity == SPD.SPACE_ENTITIES.PLANET:
 		var fuel_key = SPD.SPACE_ENTITIES.FUELCAN
 		var dark_energy_key = SPD.SPACE_ENTITIES.DARKENERGY
@@ -180,21 +186,7 @@ func _init_random_entity(cell_info, cell_number):
 	return created_entities
 
 
-func _spawn_random_entity(cell_info, cell_number):
-	var adjusted_variety = {}
-	for entity_info_key in SPD.SPACE_ENTITIES_INFO.keys():
-		adjusted_variety[entity_info_key] = \
-			SPD.SPACE_ENTITIES_INFO[entity_info_key].rarity \
-			* variety_reduction_factor \
-			/ camera_variety
-	var pool = []
-	var roll = rnd.randf()
-	for entity in adjusted_variety.keys():
-		if adjusted_variety[entity] < roll:
-			pool.push_back(entity)
-	return _init_random_entity(cell_info, cell_number)
-
-
+# Init a new cell
 func _new_cell(cell_number):
 
 	var tunnel_style_limit = TUNNEL_GENERATORS.SAW
@@ -210,7 +202,8 @@ func _new_cell(cell_number):
 
 	# First cell always has one planet
 	elif cell_number == 0:
-		var new_entity = SPD.SPACE_ENTITIES_INFO[0].scene.instance()
+		var new_entity = \
+			SPD.SPACE_ENTITIES_INFO[SPD.SPACE_ENTITIES.PLANET].scene.instance()
 		new_entity.set_global_position(Vector2(SPD.LEVEL_WIDTH * 0.75, 520))
 		call_deferred("add_child", new_entity)
 		new_cell.entities.push_back(new_entity)
@@ -218,13 +211,15 @@ func _new_cell(cell_number):
 	# For other cells use rnd
 	else:
 		for _number in range(floor(camera_density)):
-			var created_entities = _spawn_random_entity(new_cell, cell_number)
+			var created_entities = \
+				_init_random_entities(new_cell, cell_number)
 			for created in created_entities:
 				new_cell.entities.push_back(created)
 
 	return new_cell
 
 
+# Clear entities in a cell
 func _clear_cell(cell):
 	for entity in cell.entities:
 		if entity:
@@ -242,6 +237,7 @@ func _ready():
 	set_process(true)
 
 
+# Shift the cells array clearing the old element and creating the new
 func _shift_cells(forward=true):
 	if forward:
 		_clear_cell(cells[0])
