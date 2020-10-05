@@ -63,7 +63,7 @@ var camera_cell = 0
 
 # Update script locals
 func _update_locals():
-	camera_cell = floor(camera.position.x / SPD.LEVEL_WIDTH * 2)
+	camera_cell = floor(camera.position.x / SPD.LEVEL_WIDTH)
 	camera_density = initial_density + abs(
 		int(camera.position.x / density_change_distance)
 		* density_change_ammount
@@ -136,6 +136,7 @@ func _select_random_entity():
 
 
 func _init_random_entity(cell_info, cell_number):
+	var created_entities = []
 
 	var selected_entity = _select_random_entity()
 	var new_entity = \
@@ -148,14 +149,35 @@ func _init_random_entity(cell_info, cell_number):
 	))
 
 	if selected_entity == SPD.SPACE_ENTITIES.PLANET:
-		# TODO: Spawn fuel or dark energy
-		pass
+		var fuel_key = SPD.SPACE_ENTITIES.FUELCAN
+		var dark_energy_key = SPD.SPACE_ENTITIES.DARKENERGY
+		var pool = []
+		var roll = rnd.randf()
+		if roll > SPD.PLANET_ENTITIES_INFO[fuel_key].rarity:
+			pool.push_back(fuel_key)
+		if roll > SPD.PLANET_ENTITIES_INFO[dark_energy_key].rarity:
+			pool.push_back(dark_energy_key)
+		if len(pool) > 0:
+			var selection = pool[rnd.randi_range(0, len(pool)-1)]
+			var new_fuel = \
+				SPD.PLANET_ENTITIES_INFO[selection].scene.instance()
+			var rand_angle = rnd.randf() * 2
+			var distance_to_planet = new_entity.planet_scale * 220
+			new_fuel.set_global_position(Vector2(
+				new_entity.position.x + sin(rand_angle*PI) * distance_to_planet,
+				new_entity.position.y + cos(rand_angle*PI) * distance_to_planet
+			))
+			created_entities.push_back(new_fuel)
+			call_deferred("add_child", new_fuel)
 
 	if selected_entity == SPD.SPACE_ENTITIES.ASTEROID:
 		if rnd.randi_range(0, 1) == 1:
 			new_entity.velocity = Vector2(0, rnd.randf_range(-200, 200))
 
+	created_entities.push_back(new_entity)
 	call_deferred("add_child", new_entity)
+
+	return created_entities
 
 
 func _spawn_random_entity(cell_info, cell_number):
@@ -170,7 +192,7 @@ func _spawn_random_entity(cell_info, cell_number):
 	for entity in adjusted_variety.keys():
 		if adjusted_variety[entity] < roll:
 			pool.push_back(entity)
-	_init_random_entity(cell_info, cell_number)
+	return _init_random_entity(cell_info, cell_number)
 
 
 func _new_cell(cell_number):
@@ -191,18 +213,22 @@ func _new_cell(cell_number):
 		var new_entity = SPD.SPACE_ENTITIES_INFO[0].scene.instance()
 		new_entity.set_global_position(Vector2(SPD.LEVEL_WIDTH * 0.75, 520))
 		call_deferred("add_child", new_entity)
+		new_cell.entities.push_back(new_entity)
 
 	# For other cells use rnd
 	else:
 		for _number in range(floor(camera_density)):
-			_spawn_random_entity(new_cell, cell_number)
+			var created_entities = _spawn_random_entity(new_cell, cell_number)
+			for created in created_entities:
+				new_cell.entities.push_back(created)
 
 	return new_cell
 
 
 func _clear_cell(cell):
 	for entity in cell.entities:
-		entity.free()
+		if entity:
+			entity.free()
 
 
 func _ready():
