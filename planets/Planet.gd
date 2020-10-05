@@ -36,8 +36,12 @@ func _physics_process(delta):
 			ship.speed = Vector2(cos(angle+sign(orbit_speed)*PI/2), sin(angle+sign(orbit_speed)*PI/2))*orbital_speed
 		if ship.speed.length() < abs(orbital_speed) and orbit_penetration > 5:
 			ship.is_lock = true
+			if ship.has_node('Wrapper'):
+				ship.get_node('Wrapper').enabled = false
 		else:
 			ship.speed *= max(0, 1 - orbit_penetration/20)
 
 func _on_Orbit_body_exited(body):
 	body.is_lock = false
+	if body.has_node('Wrapper'):
+		body.get_node('Wrapper').enabled = true
