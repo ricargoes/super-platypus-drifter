@@ -26,13 +26,15 @@ position = Vector2( 256, 540 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 
-[node name="Endline" type="Area2D" parent="."]
+[node name="Events" type="Node2D" parent="."]
+
+[node name="Endline" type="Area2D" parent="Events"]
 position = Vector2( 5400, 540 )
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Endline"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Events/Endline"]
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
-[connection signal="body_entered" from="Endline" to="." method="_on_Endline_body_entered"]
+[connection signal="body_entered" from="Events/Endline" to="." method="_on_Endline_body_entered"]
