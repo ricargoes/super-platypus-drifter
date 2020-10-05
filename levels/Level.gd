@@ -1,6 +1,6 @@
 extends Node2D
 
-export var scroll_speed = 40.0
+export var scroll_speed = 100.0
 onready var camera_start = get_node("CameraStart")
 onready var camera = $Camera
 onready var ship_start = get_node("ShipStart")

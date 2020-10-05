@@ -6,7 +6,6 @@
 
 [node name="ProceduralLevel" type="Node2D"]
 script = ExtResource( 2 )
-scroll_speed = 50.0
 
 [node name="ProceduralManager" type="Node" parent="."]
 script = ExtResource( 3 )
