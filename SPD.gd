@@ -48,3 +48,12 @@ var PLANET_ENTITIES_INFO = {
 	SPACE_ENTITIES.DARKENERGY: SpaceEntityInfo.new(
 		preload("res://powerups/DarkEnergy.tscn"), 0.95),
 }
+
+enum Speakers { Pilot, Council, Dingo, Royal }
+
+var CONVERSATION_SEQUENCES = {
+	"start": [
+		{"speaker": Speakers.Pilot, "text": "tutupa"},
+		{"speaker": Speakers.Royal, "text": "chaca"},
+	]
+}

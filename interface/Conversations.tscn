@@ -9,8 +9,18 @@
 thickness = 3
 vertical = true
 
-[node name="Conversations" type="MarginContainer"]
-visible = false
+[node name="ConversationsPopup" type="Popup"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Speak" type="AudioStreamPlayer" parent="."]
+
+[node name="Margins" type="MarginContainer" parent="."]
 anchor_top = 0.685
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,12 +31,11 @@ custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
-script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Conversations" type="NinePatchRect" parent="."]
+[node name="BG" type="NinePatchRect" parent="Margins"]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 1900.0
@@ -41,7 +50,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="Conversations"]
+[node name="MarginContainer" type="MarginContainer" parent="Margins/BG"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_right = 20
@@ -52,27 +61,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Conversations/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Margins/BG/MarginContainer"]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 1860.0
 margin_bottom = 280.0
 
-[node name="TextureRect" type="TextureRect" parent="Conversations/MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Margins/BG/MarginContainer/HBoxContainer"]
 margin_right = 300.0
 margin_bottom = 260.0
 rect_min_size = Vector2( 300, 0 )
 texture = ExtResource( 3 )
 expand = true
 
-[node name="VSeparator" type="VSeparator" parent="Conversations/MarginContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="Margins/BG/MarginContainer/HBoxContainer"]
 margin_left = 304.0
 margin_right = 324.0
 margin_bottom = 260.0
 rect_min_size = Vector2( 20, 0 )
 custom_styles/separator = SubResource( 1 )
 
-[node name="TextEdit" type="TextEdit" parent="Conversations/MarginContainer/HBoxContainer"]
+[node name="TextEdit" type="TextEdit" parent="Margins/BG/MarginContainer/HBoxContainer"]
 margin_left = 328.0
 margin_right = 1840.0
 margin_bottom = 260.0
@@ -81,5 +90,3 @@ text = "probando"
 readonly = true
 draw_spaces = true
 wrap_enabled = true
-
-[node name="Speak" type="AudioStreamPlayer" parent="."]
