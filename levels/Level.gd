@@ -33,3 +33,7 @@ func _update_game_state():
 		ship.die()
 	if ship_camera_displacement > SPD.LEVEL_WIDTH/2:
 		ship.die()
+
+
+func _on_Endline_body_entered(body):
+	emit_signal("level_ended")
