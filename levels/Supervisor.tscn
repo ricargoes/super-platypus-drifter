@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://levels/Supervisor.gd" type="Script" id=1]
-[ext_resource path="res://danubio_azul_j_strauss.ogg" type="AudioStream" id=2]
+[ext_resource path="res://music.ogg" type="AudioStream" id=2]
+
 
 [node name="Supervisor" type="Node"]
 script = ExtResource( 1 )
