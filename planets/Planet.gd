@@ -4,6 +4,8 @@ export var orbit_speed = 2*PI/10
 export var planet_scale = 1.0
 const BREAK_AMOUNT = 1000
 
+var _max_orbit_radius = 0
+
 func _ready():
 	$Sprite.scale *= planet_scale
 	$OrbitalRing.scale *= planet_scale
@@ -11,7 +13,8 @@ func _ready():
 	planet_shape.radius = $CollisionShape2D.shape.radius*planet_scale
 	$CollisionShape2D.shape = planet_shape
 	var orbit_shape = CircleShape2D.new()
-	orbit_shape.radius = $Orbit/CollisionShape2D.shape.radius*planet_scale
+	_max_orbit_radius = $Orbit/CollisionShape2D.shape.radius*planet_scale
+	orbit_shape.radius = _max_orbit_radius
 	$Orbit/CollisionShape2D.shape = orbit_shape
 	set_physics_process(true)
 
@@ -26,14 +29,15 @@ func _physics_process(delta):
 		var ship_from_planet = ship.position - position
 		var r = ship_from_planet.length()
 		var orbital_speed = r*orbit_speed
+		var orbit_penetration = max(0, _max_orbit_radius - r)
 		if ship.is_lock:
 			var angle = ship_from_planet.angle()
 			ship.position = position + r*Vector2(cos(angle+orbit_speed*delta), sin(angle+orbit_speed*delta))
 			ship.speed = Vector2(cos(angle+sign(orbit_speed)*PI/2), sin(angle+sign(orbit_speed)*PI/2))*orbital_speed
-		if ship.speed.length() < abs(orbital_speed):
+		if ship.speed.length() < abs(orbital_speed) and orbit_penetration > 5:
 			ship.is_lock = true
 		else:
-			ship.speed -= BREAK_AMOUNT * delta * ship.speed.normalized()
+			ship.speed *= max(0, 1 - orbit_penetration/20)
 
 func _on_Orbit_body_exited(body):
 	body.is_lock = false
