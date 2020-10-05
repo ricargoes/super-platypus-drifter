@@ -14,9 +14,9 @@ func _ready():
 	ship = SPD.SHIP_SCENE.instance()
 	ship.position = ship_start.position
 	add_child(ship)
-	set_process(true)
+	set_physics_process(true)
 
-func _process(delta):
+func _physics_process(delta):
 	camera.global_translate(Vector2(scroll_speed * delta, 0))
 	if ship:
 		_update_game_state()

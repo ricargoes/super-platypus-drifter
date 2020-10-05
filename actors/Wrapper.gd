@@ -6,10 +6,10 @@ onready var root = $".."
 
 
 func _ready():
-	set_process(true)
+	set_physics_process(true)
 
 
-func _process(_delta):
+func _physics_process(_delta):
 	if enabled:
 		if root.position.y < 0:
 			root.position.y = root.position.y + SPD.LEVEL_HEIGHT

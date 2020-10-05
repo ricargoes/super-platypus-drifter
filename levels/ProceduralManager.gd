@@ -234,7 +234,7 @@ func _ready():
 	cells.push_back(_new_cell(camera_cell    ))
 	cells.push_back(_new_cell(camera_cell + 1))
 	cells.push_back(_new_cell(camera_cell + 2))
-	set_process(true)
+	set_physics_process(true)
 
 
 # Shift the cells array clearing the old element and creating the new
@@ -249,7 +249,7 @@ func _shift_cells(forward=true):
 		cells.push_front(_new_cell(camera_cell - 2))
 
 
-func _process(_delta):
+func _physics_process(_delta):
 	_update_locals()
 
 	# Cell shifting and generation
