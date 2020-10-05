@@ -32,14 +32,14 @@ class Cell:
 # Editor configuration with defaul values
 
 # Ammount of objects in each game screen
-export(float) var initial_density = 3
+export(float) var initial_density = 7
 export(int) var density_change_distance = 1960
-export(float) var density_change_ammount = 1
+export(float) var density_change_ammount = 3
 
 # Factor to increase the rarity of entities found
-export(float) var initial_variety = 1
+export(float) var initial_variety = 5
 export(int) var variety_change_distance = 1960
-export(float) var variety_change_ammount = 0.5
+export(float) var variety_change_ammount = 1.5
 export(float) var variety_reduction_factor = 1
 
 # How wide is the safe zone

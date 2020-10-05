@@ -44,7 +44,7 @@ var SPACE_ENTITIES_INFO = {
 # Space entities info data for planets
 var PLANET_ENTITIES_INFO = {
 	SPACE_ENTITIES.FUELCAN: SpaceEntityInfo.new(
-		preload("res://powerups/FuelCan.tscn"), 0.75),
+		preload("res://powerups/FuelCan.tscn"), 0.2),
 	SPACE_ENTITIES.DARKENERGY: SpaceEntityInfo.new(
 		preload("res://powerups/DarkEnergy.tscn"), 0.95),
 }
