@@ -41,3 +41,6 @@ func _on_Endline_body_entered(body):
 
 func game_over():
 	var _unused = get_tree().change_scene("res://levels/GameOver.tscn")
+
+func artifact_found(body):
+	SPD.artifacts[SPD.current_level] = true

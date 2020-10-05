@@ -148,3 +148,4 @@ sequence_name = "level1_end1"
 position = Vector2( 5312.66, 627.374 )
 scale = Vector2( 1, 20 )
 sequence_name = "level1_end2"
+[connection signal="body_entered" from="Events/ConversationActivator" to="." method="artifact_found"]
