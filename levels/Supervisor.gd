@@ -4,7 +4,7 @@ var levels_scene = [
 	preload("res://levels/Level1.tscn"),
 	preload("res://levels/Level2.tscn"),
 	preload("res://levels/Level3.tscn"),
-	preload("res://levels/Level1.tscn")
+	preload("res://levels/WinScreen.tscn")
 ]
 var current_levels_scene = null
 
