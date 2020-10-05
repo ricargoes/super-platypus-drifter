@@ -11,5 +11,5 @@ dest_files=[ "res://.import/dingo.ogg-f8a13ccd74b1efc66b3dc7c43638cbab.oggstr" ]
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

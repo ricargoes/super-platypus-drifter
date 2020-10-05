@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/danubio_azul_j_strauss.ogg-9728cccc68feb62709c8d2bce8e7346d.oggstr"
+
+[deps]
+
+source_file="res://danubio_azul_j_strauss.ogg"
+dest_files=[ "res://.import/danubio_azul_j_strauss.ogg-9728cccc68feb62709c8d2bce8e7346d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

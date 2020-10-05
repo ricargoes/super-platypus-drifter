@@ -14,8 +14,11 @@ scroll_speed = 50.0
 [node name="Backgroud" parent="." index="1"]
 texture = ExtResource( 7 )
 
+[node name="ShipStart" parent="." index="3"]
+position = Vector2( 236, 540 )
+
 [node name="ConversationActivator" parent="." index="7" instance=ExtResource( 6 )]
-position = Vector2( 280.316, 541.945 )
+position = Vector2( 293.316, 541.945 )
 sequence_name = "level1_start"
 
 [node name="Planet" parent="." index="8" instance=ExtResource( 1 )]

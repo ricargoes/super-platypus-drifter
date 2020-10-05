@@ -6,6 +6,8 @@ onready var camera = $Camera
 onready var ship_start = get_node("ShipStart")
 var ship = null
 
+signal level_ended
+
 func _ready():
 	# Initial position for the camera
 	camera.position = camera_start.position
