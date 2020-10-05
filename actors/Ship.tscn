@@ -127,6 +127,10 @@ __meta__ = {
 wait_time = 2.5
 one_shot = true
 
+[node name="WittyComment" type="Timer" parent="Bubble"]
+wait_time = 15.0
+autostart = true
+
 [node name="Wrapper" type="Node" parent="."]
 script = ExtResource( 15 )
 
@@ -137,3 +141,4 @@ script = ExtResource( 16 )
 script = ExtResource( 16 )
 sprite_name = "BoosterAnim"
 [connection signal="timeout" from="Bubble/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Bubble/WittyComment" to="." method="_on_WittyComment_timeout"]

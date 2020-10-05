@@ -12,6 +12,7 @@ var boost_charge = 0
 var fuel = 30
 
 func _ready():
+	randomize()
 	$ShipGUI/Box/BoostBar.max_value = MAX_BOOST_CHARGE
 	$ShipGUI/Box/FuelBar.max_value = MAX_FUEL
 	set_physics_process(true)
@@ -107,3 +108,23 @@ func show_bubble(text):
 
 func _on_Timer_timeout():
 	$Bubble.hide()
+
+
+func _on_WittyComment_timeout():
+	var witty_comments = [
+		"I miss my bed soooooo much",
+		"When I get back to my planet I'm taking a week off",
+		"I wish I had had children...",
+		"Please, don’t make me die.",
+		"...heeere am I floating in my tin can...",
+		"What was that? Oh, just galaxies.",
+		"I hope I dont find many black holes.",
+		"I hope I dont run into a dingo patrol.",
+		"Should I renew my Platypoon Prime subscription…?",
+		"I should have brought me some more books.",
+		"...faaaar above the world...",
+		"Man, outer space is... I mean... it is VERY large..."
+	]
+	var text = witty_comments[randi() % witty_comments.size()]
+	if not $Bubble.visible:
+		show_bubble(text)

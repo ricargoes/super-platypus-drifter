@@ -9,6 +9,7 @@
 
 [node name="Tutorial" instance=ExtResource( 2 )]
 script = ExtResource( 6 )
+do_witty_comments = false
 
 [node name="Planet" parent="Planets" index="0" instance=ExtResource( 1 )]
 position = Vector2( 684.702, 520.822 )

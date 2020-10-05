@@ -4,6 +4,7 @@ export var scroll_speed = 100.0
 onready var camera_start = $CameraStart
 onready var camera = $Camera
 onready var ship_start = $ShipStart
+export var do_witty_comments = true
 var ship = null
 
 signal level_ended
@@ -15,6 +16,7 @@ func _ready():
 	# Initial position for the ship
 	ship = SPD.SHIP_SCENE.instance()
 	ship.position = ship_start.position
+	if not do_witty_comments: ship.get_node("Bubble/WittyComment").queue_free()
 	add_child(ship)
 	set_physics_process(true)
 
