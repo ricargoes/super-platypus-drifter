@@ -1,0 +1,186 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://interface/9patch.png" type="Texture" id=1]
+[ext_resource path="res://interface/characters/billyduck_anim.tres" type="Texture" id=2]
+[ext_resource path="res://interface/characters/council_member_anim.tres" type="Texture" id=3]
+[ext_resource path="res://interface/characters/dingo_django_anim.tres" type="Texture" id=4]
+[ext_resource path="res://interface/characters/platypuness_anim.tres" type="Texture" id=5]
+[ext_resource path="res://actors/Baby Platypus animation/Baby Platypus1.png" type="Texture" id=6]
+[ext_resource path="res://actors/Baby Platypus animation/Baby Platypus5.png" type="Texture" id=7]
+[ext_resource path="res://actors/Baby Platypus animation/Baby Platypus3.png" type="Texture" id=8]
+[ext_resource path="res://actors/Baby Platypus animation/Baby Platypus2.png" type="Texture" id=9]
+[ext_resource path="res://actors/Baby Platypus animation/Baby Platypus4.png" type="Texture" id=10]
+[ext_resource path="res://interface/theme.tres" type="Theme" id=11]
+[ext_resource path="res://levels/WinScreen.gd" type="Script" id=12]
+
+[sub_resource type="AnimatedTexture" id=1]
+flags = 4
+frames = 5
+frame_0/texture = ExtResource( 6 )
+frame_1/texture = ExtResource( 9 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 8 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 10 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 7 )
+frame_4/delay_sec = 0.0
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://interface/NotoSerifDisplay-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 34
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = SubResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[node name="CenterContainer" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 11 )
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 506.0
+margin_top = 37.0
+margin_right = 1414.0
+margin_bottom = 1043.0
+custom_constants/separation = -40
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 908.0
+margin_bottom = 83.0
+text = "You Win"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 43.0
+margin_right = 908.0
+margin_bottom = 802.0
+rect_min_size = Vector2( 0, 100 )
+custom_constants/separation = 100
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 759.0
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/CenterContainer"]
+margin_top = 339.0
+margin_right = 100.0
+margin_bottom = 419.0
+columns = 2
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/CenterContainer/GridContainer"]
+margin_right = 48.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+texture = ExtResource( 3 )
+stretch_mode = 6
+flip_h = true
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/HBoxContainer/CenterContainer/GridContainer"]
+margin_left = 52.0
+margin_right = 100.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+texture = ExtResource( 4 )
+stretch_mode = 6
+flip_h = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/CenterContainer/GridContainer"]
+margin_top = 42.0
+margin_right = 48.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+texture = ExtResource( 5 )
+stretch_mode = 6
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/HBoxContainer/CenterContainer/GridContainer"]
+margin_left = 52.0
+margin_top = 42.0
+margin_right = 100.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+texture = ExtResource( 2 )
+stretch_mode = 6
+
+[node name="TextureRect5" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+margin_left = 200.0
+margin_right = 908.0
+margin_bottom = 759.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 3
+texture = SubResource( 1 )
+stretch_mode = 6
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer"]
+margin_top = 762.0
+margin_right = 908.0
+margin_bottom = 962.0
+rect_min_size = Vector2( 800, 200 )
+texture = ExtResource( 1 )
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 9
+patch_margin_bottom = 9
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/NinePatchRect/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 888.0
+margin_bottom = 180.0
+custom_fonts/font = SubResource( 3 )
+readonly = true
+wrap_enabled = true
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 922.0
+margin_right = 908.0
+margin_bottom = 1012.0
+custom_styles/separator = SubResource( 4 )
+custom_constants/separation = 90
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 972.0
+margin_right = 908.0
+margin_bottom = 1006.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Retry" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 294.0
+margin_right = 444.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 150, 0 )
+text = "Retry"
+
+[node name="MainMenu" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 464.0
+margin_right = 614.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 150, 0 )
+text = "Main Menu"
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Retry" to="." method="_on_Retry_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/MainMenu" to="." method="_on_MainMenu_pressed"]
