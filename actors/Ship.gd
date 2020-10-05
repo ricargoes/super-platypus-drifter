@@ -44,6 +44,11 @@ func die():
 	queue_free()
 
 func pilot(delta):
+	if Input.get_connected_joypads().size() > 0:
+		var point_joystick = Vector2(Input.get_joy_axis(0, JOY_AXIS_0), Input.get_joy_axis(0, JOY_AXIS_1))
+		if point_joystick.length() > 0.2:
+			var pointing_correctly = orienting_to(point_joystick.angle(), delta)
+	
 	if Input.is_action_pressed("ship_boost"):
 		charge_boost(delta)
 	elif Input.is_action_just_released("ship_boost"):
