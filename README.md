@@ -1,4 +1,4 @@
-# super-platypus-drifter
+# Super Platypus Drifter
 
 ## The game
 
